@@ -9,23 +9,36 @@ import SignUp from "./pages/SignUp";
 
 
 function App() {
-  // instal react-router-dom  [x]  
-  // make page folder create below files  [x]  
-  // Explore.jsx  [x]  
-  // Offers  [x]  
-  // Profile  [x]  
-  // SignIn  [x]  
-  // SignUp  [x]  
-  // ForgotPasswords.jsx  [x]  
-  // gt app.js  [x]  
-  // import BrowserRouter as Router, Routes, Rout   [x]  from ...
-  // import all the pages  [x]  
-  // crate router routes route wrap  [x]  
 
-  // add path= "/" elements{}  [x]  
-// add appropriate endpoints   [x]  
-  // check on browser  [x]  
-
+//inside of Router, 
+  // make folder components
+  // Navbar.jsx
+  // import {useNavigate, useLocation}
+  // import {ReactComponent as OfferIcon} from .. localOfferIcon.svg
+  // copy 2 more Explore
+  // and PersonOutline
+  // jsx footer.navbar wrap
+  // nav.navbarNav wrap
+  // ul.navbarListItems wrap
+  // li.navbarListItem wrap
+  // <ExploreIcon fill='#2c2c2c' width='36px' height='36px' />
+  // sibling to Expl. , p content Explore
+  // copy twice
+  // 2nd  Offer
+  // 3rd  PersonOutline p Profile
+  // gt app.js
+  // import navbar
+  // insert bottom before closing Router.
+  //  check
+  // initalize useNavigate() as navigate
+  // useLocation same as above
+  // li 1st onClick  function envoke navigate passing '/'
+  // Offer
+  // Profile
+  // create const pathMatchRoute  pass route  if route equal to location.pathname  return true
+  // change fill pathMatchRoute('/')?  #2c2c2c : #8f8f8f
+  // p add class {pathMatchRoute('/')? 'navbarListItemNameActive': 'navbarListItemName'}
+  // do the rest 
 
   return (
     <>
