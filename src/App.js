@@ -2,22 +2,29 @@ import React from "react";
 
 function App() {
 
-// gt authentication  [x]
-  // start  [x]
-  // email/ pass  [x]
-  // google oauth  [x]
-  // enable  [x]
-  // change public face name  house marketplace app  [x]
-  // add user 1 fakeone  [x]
-  // enable firestore  [x]
-  // create test mode  [x]
-  // enable  [x]
-  // click on rule tab  [x]
-  // goto gist.gihub/bradtraversy  firebase_rule.txt  [x]
-  // copy firestore rule copy paste on web  [x]
-  // publish rule  [x]
-  // gt storage  [x]
-  // copy storage rules and paste to storeage rule  [x]
+//gt firestore  [x]
+  // add listings  [x]
+  // autoid click  [x]
+  // gt listing json  [x]
+  // add field  [x]
+  // go to unsplash  [x]
+  // copy past img url  [x]
+  // save  [x]
+  // gt index tab  [x]
+  // create index  [x]
+  // type asc  [x]
+  // timestamp desc  [x]
+  // choose collection  [x]
+  // add another  [x]
+  // userRef asc  [x]
+  // timestamp dec  [x]
+  // collection  [x]
+  // add another  [x]
+  // offer  asc  [x]
+  // timestamp dec  [x]
+  // gt app.js  [x]
+  // update title House   [x]Marketpace
+  // 
 
   return (
     <>
