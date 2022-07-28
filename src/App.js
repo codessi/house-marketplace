@@ -1,42 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
 function App() {
-// create firebase.config.js  []
-  //copy and paste from web  []
-  //import getFireStore from 'firebase/firestore'  []
-  // export const db = getFirestore()  []
-  // npm i firebase  []
-  // bring assets folder inside of src  []
-  // bring in index.css to src  []
-  // favicon to public  []
-  // delete app.css & etc  []
-  // gt app  []
- // <> h1 My APP  []
-  // check  []
-  // gt firebase web  []
-  // continue  []
-  
 
-
+// gt authentication  [x]
+  // start  [x]
+  // email/ pass  [x]
+  // google oauth  [x]
+  // enable  [x]
+  // change public face name  house marketplace app  [x]
+  // add user 1 fakeone  [x]
+  // enable firestore  [x]
+  // create test mode  [x]
+  // enable  [x]
+  // click on rule tab  [x]
+  // goto gist.gihub/bradtraversy  firebase_rule.txt  [x]
+  // copy firestore rule copy paste on web  [x]
+  // publish rule  [x]
+  // gt storage  [x]
+  // copy storage rules and paste to storeage rule  [x]
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>My App</h1>
+    </>
   );
 }
 
