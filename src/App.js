@@ -1,34 +1,44 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Explore from "./pages/Explore";
+import ForgotPasswords from "./pages/ForgotPasswords";
+import Offers from "./pages/Offers";
+import Profile from "./pages/Profile";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+
 
 function App() {
+  // instal react-router-dom  [x]  
+  // make page folder create below files  [x]  
+  // Explore.jsx  [x]  
+  // Offers  [x]  
+  // Profile  [x]  
+  // SignIn  [x]  
+  // SignUp  [x]  
+  // ForgotPasswords.jsx  [x]  
+  // gt app.js  [x]  
+  // import BrowserRouter as Router, Routes, Rout   [x]  from ...
+  // import all the pages  [x]  
+  // crate router routes route wrap  [x]  
 
-//gt firestore  [x]
-  // add listings  [x]
-  // autoid click  [x]
-  // gt listing json  [x]
-  // add field  [x]
-  // go to unsplash  [x]
-  // copy past img url  [x]
-  // save  [x]
-  // gt index tab  [x]
-  // create index  [x]
-  // type asc  [x]
-  // timestamp desc  [x]
-  // choose collection  [x]
-  // add another  [x]
-  // userRef asc  [x]
-  // timestamp dec  [x]
-  // collection  [x]
-  // add another  [x]
-  // offer  asc  [x]
-  // timestamp dec  [x]
-  // gt app.js  [x]
-  // update title House   [x]Marketpace
-  // 
+  // add path= "/" elements{}  [x]  
+// add appropriate endpoints   [x]  
+  // check on browser  [x]  
+
 
   return (
     <>
-      <h1>My App</h1>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Explore />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/forgot-passwords" element={<ForgotPasswords /> } />
+        </Routes>
+      </Router>
     </>
   );
 }
