@@ -42,7 +42,7 @@ const SignUp = () => {
       formDataCopy.timestamp = serverTimestamp();
       console.log(formDataCopy.timestamp)
 
-      await setDoc(doc(db, "user", user.uid), formDataCopy);
+      await setDoc(doc(db, "users", user.uid), formDataCopy);
 
       navigate("/");
     } catch (error) {

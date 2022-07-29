@@ -14,11 +14,11 @@ function App() {
   // gt add data doc   [x]
   // gt signup   [x]
   // import{setDoc, doc,serverTimestamp} from 'firebase/firestore'   [x]
-  // inside of try, var formDataCopy = {...formData}   []
-  // delete formDataCopy.password   []
-  //formDataCopy.timestamp= serverTimestamp()   []
-  // await setDoc() pass doc pass db and 'users', user.uid   []
-  // inser second arg of doc, formDataCopy   []
+  // inside of try, var formDataCopy = {...formData}   [x]
+  // delete formDataCopy.password   [x]
+  //formDataCopy.timestamp= serverTimestamp()   [x]
+  // await setDoc() pass doc pass db and 'users', user.uid   [x]
+  // inser second arg of doc, formDataCopy   [x]
 
 
   return (
