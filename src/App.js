@@ -11,21 +11,15 @@ import Navbar from "./components/Navbar";
 
 function App() {
 
-// gotod firebase documentaton about auth [x]
-// gt sign up [x]
-  // import {getAuth, createUserWithEmailAndPassWord, updateProfile} from 'firebase/auth' []
-  // imort { db } from firbase.config [x]
-  // add onSubmit inside of form tag [x]
-  // preventdefault [x]
-  // create try catch(error) [x]
-  // create async onSubmit function [x]
-  // try,  assign auth = getAuth [x]
-  //  const userCredential = await createUser... (auth, email, password) [x]
-  //const user = userCredential.user [x]
-  // updateProfile(auth.currentUser, {displayName: name}) []
-  // navigate('/') []
-  // catch (error){  const errorCode = error.code; []
-    // const errorMessage = error.message;} []
+  // gt add data doc   [x]
+  // gt signup   [x]
+  // import{setDoc, doc,serverTimestamp} from 'firebase/firestore'   [x]
+  // inside of try, var formDataCopy = {...formData}   []
+  // delete formDataCopy.password   []
+  //formDataCopy.timestamp= serverTimestamp()   []
+  // await setDoc() pass doc pass db and 'users', user.uid   []
+  // inser second arg of doc, formDataCopy   []
+
 
   return (
     <>

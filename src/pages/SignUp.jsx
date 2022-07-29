@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ArrowRightIcon } from "./../assets/svg/keyboardArrowRightIcon.svg";
 import visibilityIcon from "./../assets/svg/visibilityIcon.svg";
 import {
@@ -9,6 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { db } from "./../firebase.config";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,6 +36,14 @@ const SignUp = () => {
       const user = userCredential.user;
 
       updateProfile(auth.currentUser, { displayName: name });
+
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
+      console.log(formDataCopy.timestamp)
+
+      await setDoc(doc(db, "user", user.uid), formDataCopy);
+
       navigate("/");
     } catch (error) {
       console.log(error);
