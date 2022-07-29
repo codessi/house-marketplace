@@ -10,36 +10,31 @@ import Navbar from "./components/Navbar";
 
 
 function App() {
+// gt signin  [x]
+  //import usestate, Link,useNavigate, ArrowRightIcon,  [x]
+  // import visibilityIcon  svg  [x]
+  // const [showPassword, set.. ] state false  [x]
+  // const formData, set... state passing object key email "" password: ""  [x]
+  // destructure formData with email and password  [x]
+  //add jsx .pageContainer  [x]
+  // header wrap [x]
+  // p.pageHeader content Welcome Back!  [x]
+  //sibling to header, main tag wrap form tag wrap input.emailInput type email   [x]placeholder email id email value {email} onChange onChnage function
+  // make onChange function  [x]
+  // jsx sibling to input, .passwordInputDiv wrap  [x]
+  // input type {showPassword? 'text' :"password"} .passwordInput placeholder   [x]Password id password value password onchange onChange
+  // sibling img.showPassword src {visibilityIcon} alt show password  onClick   []call the setShow  previousState !previousState
+  // parent of img, sibling , <Link to = '/forgot-password' .forgotPasswordLink   [x]content Forgot Password
+  // sibiling, .signInBar wrap p.signInText content Sign In  [x]
+  // sibling to p, button.signInButton wrap  [x]
+  // ArrowRightIcon fill #ffffff width 34px height 34px  [x]
+  // sibling to form, Link to /sign-up  .registerLink  wrap  [x]
+  // Sign Up Instead  [x]
+  // check  [x]
+  // onChange pass e  setFormData pass function pass previousState return   [x]object  ...previousState, key [e.target.id] value e.target.value
+  // check dev tool  [x]
 
-//inside of Router,  [x]
-  // make folder components []
-  // Navbar.jsx []
-  // import {useNavigate, useLocation} []
-  // import {ReactComponent as OfferIcon} from .. localOfferIcon.svg [x]
-  // copy 2 more Explore [x]
-  // and PersonOutline [x]
-  // jsx footer.navbar wrap []
-  // nav.navbarNav wrap []
-  // ul.navbarListItems wrap []
-  // li.navbarListItem wrap []
-  // <ExploreIcon fill='#2c2c2c' width='36px' height='36px' /> []
-  // sibling to Expl. , p content Explore []
-  // copy twice []
-  // 2nd  Offer []
-  // 3rd  PersonOutline p Profile []
-  // gt app.js [x]
-  // import navbar [x]
-  // insert bottom before closing Router. [x]
-  //  check [x]
-  // initalize useNavigate() as navigate [x]
-  // useLocation same as above [x]
-  // li 1st onClick  function envoke navigate passing '/' [x]
-  // Offer [x]
-  // Profile [x]
-  // create const pathMatchRoute  pass route  if route equal to location.pathname  return true [x]
-  // change fill pathMatchRoute('/')?  #2c2c2c : #8f8f8f []
-  // p add class {pathMatchRoute('/')? 'navbarListItemNameActive': 'navbarListItemName'} []
-  // do the rest  []
+  
 
   return (
     <>
