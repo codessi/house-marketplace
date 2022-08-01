@@ -12,18 +12,24 @@ import { ToastContainer } from 'react-toastify';
 
 
 function App() {
- 
-  // npm  react-toastify [x]
-  // gt npm [x]
-  // import {ToastContainer} [x]
-  // import 'react-toastify/dist/ReactToastify.css" [x]
-  // insert insert after Router [x]
-  // gt  signin [x]
-  //import {toast} [x]
-  // insert toast.error('Bad User Credientials') in error [x]
-  // do same with sign up with "Something went wrong with  []registration"
-  //  []
-  // 
+
+ //gt profile jsx , replace user with [x]formData
+  // set default with object[x]
+
+// delete useEffect[x]
+  // move auth to top[x]
+  // insert default state  object [x]name auth.currentUser.displayName email auth.currentUser.email
+  // jsx  keep empty fragment[x]
+  // look local storage[x]
+  // look dev tool state[x]
+  // jsx[x]
+  // ..profile wrap[x]
+  // header.profileHeader wrap[x]
+  // p.pageheader cont. My Profile[x]
+  // sibiing p  button.logOut cont. [x]Logout
+  // add type 'button'  onclick [x]onLogout
+  // const onLogout   auth.signOut() [x]navigate('/')
+  // distructure name and email []
 
   return (
     <>
