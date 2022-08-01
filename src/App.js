@@ -7,31 +7,23 @@ import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
-
-  //signInWithEmailAndPassword , getAuth  - import     [x]
-  // at form submit  onSubmit    [x]
-  // make const onSubmit asyn  prevent    [x]
-  //  initalize auth with getAuth    [x]
-  // userCreditial promise    [x]
-  // contitial if useCrediential.use exist then naviate('/')    [x]
-  // insert in try catch    [x]
-  // catch error with console.log(error)    [x]
-  // wrong pass word enter to test and correct one too    [x]
-  // goto app.js change .. to /profile    [x]
-
-  // gt profile.jsx    [x]
-  // import {getAuth},  useEffect    [x
-  // initlaize auth    [x]
-  // useEffect () insert console.log(auth.currentUser)    [x]
-  // import useState    [x]
-  // state user  set as null    [x]
-  // jsx  return user ternary h1 user.displayName : "not logged in"    [x]
-  // dev tool -> application indexDB  check     [x]
-  // clear firebase local as log out     [x]
-
+ 
+  // npm  react-toastify [x]
+  // gt npm [x]
+  // import {ToastContainer} [x]
+  // import 'react-toastify/dist/ReactToastify.css" [x]
+  // insert insert after Router [x]
+  // gt  signin [x]
+  //import {toast} [x]
+  // insert toast.error('Bad User Credientials') in error [x]
+  // do same with sign up with "Something went wrong with  []registration"
+  //  []
+  // 
 
   return (
     <>
@@ -46,6 +38,7 @@ function App() {
         </Routes>
         <Navbar /> 
       </Router>
+      <ToastContainer />
     </>
   );
 }

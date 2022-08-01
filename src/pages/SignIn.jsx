@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ArrowRightIcon } from "./../assets/svg/keyboardArrowRightIcon.svg";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
-
+import { toast } from "react-toastify";
 import visibilityIcon from "./../assets/svg/visibilityIcon.svg";
 
 const SignIn = () => {
@@ -32,13 +32,15 @@ const SignIn = () => {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
-        password,
-        );
+        password
+      );
       const user = userCredential.user;
       if (user) {
         navigate("/");
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error("bad user credential")
+    }
   };
 
   return (

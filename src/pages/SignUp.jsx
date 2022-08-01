@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { db } from "./../firebase.config";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import {toast} from 'react-toastify'
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +20,7 @@ const SignUp = () => {
     password: "",
   });
 
-  // form data... empty
+  //
 
   const navigate = useNavigate();
 
@@ -27,8 +28,8 @@ const SignUp = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // whateverupdtead from niput
-    // will creauser thr firebase 
+   
+   
 
     try {
       const auth = getAuth();
@@ -38,19 +39,18 @@ const SignUp = () => {
         password
       );
       const user = userCredential.user;
-      //taking the respondse user part
+     
 
       updateProfile(auth.currentUser, { displayName: name });
-      // update profiel by getAuth dna dthe cureenusering'
-      // add update name from state what... why update profile? it's sign up. oh we are adding name   becasue caret eon ly take email and password
-      // then take the passowrd
-      // add time stamk  then add that object to 
-      // firestore collection. 
+     
+   
+     
+     
 
       const formDataCopy = { ...formData };
       delete formDataCopy.password;
       formDataCopy.timestamp = serverTimestamp();
-      // add the server time temps. 
+     
       console.log(serverTimestamp())
       //  
 
@@ -58,7 +58,7 @@ const SignUp = () => {
 
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong with registration")
     }
   };
 
