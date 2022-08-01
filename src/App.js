@@ -11,26 +11,26 @@ import Navbar from "./components/Navbar";
 
 function App() {
 
-  //signInWithEmailAndPassword , getAuth  - import     []
-  // at form submit  onSubmit    []
-  // make const onSubmit asyn  prevent    []
-  //  initalize auth with getAuth    []
-  // userCreditial promise    []
-  // contitial if useCrediential.use exist then naviate('/')    []
-  // insert in try catch    []
-  // catch error with console.log(error)    []
-  // wrong pass word enter to test and correct one too    []
-  // goto app.js change .. to /profile    []
+  //signInWithEmailAndPassword , getAuth  - import     [x]
+  // at form submit  onSubmit    [x]
+  // make const onSubmit asyn  prevent    [x]
+  //  initalize auth with getAuth    [x]
+  // userCreditial promise    [x]
+  // contitial if useCrediential.use exist then naviate('/')    [x]
+  // insert in try catch    [x]
+  // catch error with console.log(error)    [x]
+  // wrong pass word enter to test and correct one too    [x]
+  // goto app.js change .. to /profile    [x]
 
-  // gt profile.jsx    []
-  // import {getAuth},  useEffect    []
-  // initlaize auth    []
-  // useEffect () insert console.log(auth.currentUser)    []
-  // import useState    []
-  // state user  set as null    []
-  // jsx  return user ternary h1 user.displayName : "not logged in"    []
-  // dev tool -> application indexDB  check     []
-  // clear firebase local as log out     []
+  // gt profile.jsx    [x]
+  // import {getAuth},  useEffect    [x
+  // initlaize auth    [x]
+  // useEffect () insert console.log(auth.currentUser)    [x]
+  // import useState    [x]
+  // state user  set as null    [x]
+  // jsx  return user ternary h1 user.displayName : "not logged in"    [x]
+  // dev tool -> application indexDB  check     [x]
+  // clear firebase local as log out     [x]
 
 
   return (
