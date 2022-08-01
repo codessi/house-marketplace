@@ -13,24 +13,37 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
 
- //gt profile jsx , replace user with [x]formData
-  // set default with object[x]
+  // gt profile [x]
+  // import {updateDoc} [x]
+  // db import  from config [x]
+  // state changeDetails set false []
+  // jsx  under header sibliing, main wrap [x]
+  // .profileDetailsHeader [x]
+  // p.profileDetailsText  content Personal Details [x]
+  // sibling p.changePersonalDetails cont {changeDetails?"done": "change"} add onclick () => {changeDetail &&  [x]onSubmit()  setChangeDetails((prevState) => !prevState)}
+  // const onSubmit  console.log(123) [x]
+  // above main closing tag ,  .profileCard wrap [x]
+  // form  wrap []
+  // input type text id name  class {!changeDetails ? 'profileName' : 'profileNameActive'}  add disabled=  []{!changeDetails}   value = {name } onChange={onChange}
+  // const onChange  setFormData(pre => ({ ...pre, [e.target.id ]: e.target.value, })) [x]
 
-// delete useEffect[x]
-  // move auth to top[x]
-  // insert default state  object [x]name auth.currentUser.displayName email auth.currentUser.email
-  // jsx  keep empty fragment[x]
-  // look local storage[x]
-  // look dev tool state[x]
-  // jsx[x]
-  // ..profile wrap[x]
-  // header.profileHeader wrap[x]
-  // p.pageheader cont. My Profile[x]
-  // sibiing p  button.logOut cont. [x]Logout
-  // add type 'button'  onclick [x]onLogout
-  // const onLogout   auth.signOut() [x]navigate('/')
-  // distructure name and email []
-
+  // copy input [x]
+  // paste below [x]
+  // change to email [x]
+  // gt onSubmit [x]
+  // try catch [x]
+  // if (auth.currentUser.displayName !== name) { // update display nmae in FB} [x]
+  // await updateProfile(auth.currentUser, {displayName: name }) [x]
+  // userRef = doc() [x]
+  // pass db, 'users', auth.currentUser.uid [x]
+  // bring in doc from firestore [x]
+  // await updateDoc(useRef, {name,}) [x]
+// bring toast [x]
+  //toast.error ("Could not update profile details") [x]
+  // console error [x]
+  // test on broser click change []
+  // check  update on firestore []
+  //  []
   return (
     <>
       <Router>
