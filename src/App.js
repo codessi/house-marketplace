@@ -8,40 +8,41 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import { ToastContainer } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+import PrivateRoute from "./components/PrivateRoute";
 
 
 function App() {
 
-  // create privateRoutejsx  []
-  // rafece  []
-  // import Navigate Outlet  []
-  // loggedIn = false  []
-  // return loggedIn? <Outlet /> : <Navigate to='/sign-in'>  []
-  // gt app  []
-  // import privateRoute  []
-  // insert route path /profile element <PrivateRoute /> wrap  []
-  // insert route /profile <Profile  []
+  // create privateRoutejsx  [x]
+  // rafece  [x]
+  // import Navigate Outlet  [x]
+  // loggedIn = false  [x]
+  // return loggedIn? <Outlet /> : <Navigate to='/sign-in'>  [x]
+  // gt app  [x]
+  // import privateRoute  [x]
+  // insert route path /profile element <PrivateRoute /> wrap  [x]
+  // insert route /profile <Profile  [x]
 
-  // create hooks folder  []
-  // create useAuthStatus.js  []
-  //  rafc  []
-  // import useEffect, useState  []
-  // import {getAuth, onAuthStateChanged} from 'firebase/auth'  []
-  // state loggedIn, setLoggedIn  set false  []
-  // checkingStatus, setCheckingStatus set true  []
-  // useEffect(() => {})  []
-  // initlize auth  []
-  // insert in effect, onAuthStateChanged(auth, (user) => {})  []
-  // insert  if user true setLoggedIn true  []
-  // ouside if  setCheckingStatus false  []
-  // return { loggedIn, checkingStatus}  []
-  // gt privateRoute  []
-  // import useAuthStatus  []
-  // const {loggedIn, chechingStatus} = useAuthStatus()  []
-  // if (checkingStatus){ return h3 Loading }  []
-  // return loggedIn? <Outlet /> : <Navigate to = '/sign-in' />  []
-  // check browser  []
+  // create hooks folder  [x]
+  // create useAuthStatus.js  [x]
+  //  rafc  [x]
+  // import useEffect, useState  [x]
+  // import {getAuth, onAuthStateChanged} from 'firebase/auth'  [x]
+  // state loggedIn, setLoggedIn  set false  [x]
+  // checkingStatus, setCheckingStatus set true  [x]
+  // useEffect(() => {})  [x]
+  // initlize auth  [x]
+  // insert in effect, onAuthStateChanged(auth, (user) => {})  [x]
+  // insert  if user true setLoggedIn true  [x]
+  // ouside if,  setCheckingStatus false  [x]
+  // return { loggedIn, checkingStatus}  [x]
+  // gt privateRoute  []x
+  // import useAuthStatus  [x]
+  // const {loggedIn, chechingStatus} = useAuthStatus()  [x]
+  // if (checkingStatus){ return h3 Loading }  [x]
+  // return loggedIn? <Outlet /> : <Navigate to = '/sign-in' />  [x]
+  // check browser  [x]
   
   // gt useAuthStatus  []
   // import useRef  []
@@ -65,7 +66,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<PrivateRoute/>} >
+            <Route path="/profile" element={<Profile/>} />
+          </Route>
+          
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-passwords" element={<ForgotPasswords /> } />
