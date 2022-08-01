@@ -11,14 +11,26 @@ import Navbar from "./components/Navbar";
 
 function App() {
 
-  // gt add data doc   [x]
-  // gt signup   [x]
-  // import{setDoc, doc,serverTimestamp} from 'firebase/firestore'   [x]
-  // inside of try, var formDataCopy = {...formData}   [x]
-  // delete formDataCopy.password   [x]
-  //formDataCopy.timestamp= serverTimestamp()   [x]
-  // await setDoc() pass doc pass db and 'users', user.uid   [x]
-  // inser second arg of doc, formDataCopy   [x]
+  //signInWithEmailAndPassword , getAuth  - import     []
+  // at form submit  onSubmit    []
+  // make const onSubmit asyn  prevent    []
+  //  initalize auth with getAuth    []
+  // userCreditial promise    []
+  // contitial if useCrediential.use exist then naviate('/')    []
+  // insert in try catch    []
+  // catch error with console.log(error)    []
+  // wrong pass word enter to test and correct one too    []
+  // goto app.js change .. to /profile    []
+
+  // gt profile.jsx    []
+  // import {getAuth},  useEffect    []
+  // initlaize auth    []
+  // useEffect () insert console.log(auth.currentUser)    []
+  // import useState    []
+  // state user  set as null    []
+  // jsx  return user ternary h1 user.displayName : "not logged in"    []
+  // dev tool -> application indexDB  check     []
+  // clear firebase local as log out     []
 
 
   return (
