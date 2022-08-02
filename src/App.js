@@ -10,40 +10,30 @@ import Navbar from "./components/Navbar";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from "./components/PrivateRoute";
+import Category from "./pages/Category";
 
 
 function App() {
+// gt explore  [x]
+  // import Link  [x]
+  // import rentCatagoryImage , sellCat...  [x]
+  // jsx .explore wrap  []
+  // header wrap  []
+  // p.pageHeader cont Explore  []
+  // sibling to header,  main wrap  []
+  // p.exploreCategoryHeading cont Categories  []
+  // sibing p, .exploreCategories wrap  []
+  // Link to '/category/rent' wrap  []
+  // img src rent.. alt rent class exploreCategoryImg  []
+  // sibling img, p.exploreCategoryName cont Place for rent  []
+  // copy pasted Link, paste next and change sell from rent  []
 
-  // create compo. OAuth.jsx  [x]
-  // rafce  [x]
-  //gt sign in  [x]
-  // import OAuth  [x]
-// insert OAuth above link  [x]
-  // gt signup same  [x]
-  // useLocation useNavigate  [x]
-  // getAuth, signInWithPopup, GoogleAuthProvider  [x]
-  // doc, setDoc,getDoc from firestore  [x]
-  // db from config  [x]
-  // toast  [x]
-  // googleIcon from  svg  [x]
-  // initialize navigate , location  [x]
-  // jsx .socialLogin wrap p cont Sign {location.pathname === '/sign-up' ? 'up' : 'in' } With  [x]
-  // sibliing to p, button.socialIconDiv wrap img src ={googleIcon} alt="google"   [x]
-  // onClick = { onGoogleClick } class="socialIconImg"  [x]
-  // const onGoogleClick  [x]
-  // async try  const auth,  const provider = new GoogleAuthProvider  [x]
-  // const result = await signInWithPopup(auth, provider)  [x]
-  // const user = result.user  []
-  // docRef = doc(db, 'users", user,uid)  [x]
-  // docSnap = await getDoc(docRef)  [x]
-  // if (!docSnap.exits()){ }  []
-  // await setDoc(doc(db, 'users', user.uid), {})  [x]
-  // insert name: user.displayName, email: user.email,  [x]
-  // timestamp: serverTimestamp()  [x]
-  // outside of if,  navigate('/')  [x]
-  // toast.error("could not authorize with Google")  [x]
-  // test on browser  []
-  // check on firestore  []
+  // creat Category.jsx under pages  []
+  // rafce  []
+  // gt app, import Category  []
+  // update category path add :categoryName  element= <Category  []
+  // 
+
   
   return (
     <>
@@ -51,6 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/category/:categoryName" element={<Category />}/>
           <Route path="/profile" element={<PrivateRoute/>} >
             <Route path="/profile" element={<Profile/>} />
           </Route>
