@@ -18,11 +18,12 @@ const Category = () => {
   const [loading, setLoading] = useState(true);
 
   const params = useParams();
-  let newListings = [];
+  
   useEffect(() => {
-    const fetchListings = async() => {
+    const fetchListings = async () => {
       try {
         const listingsRef = collection(db, "listings");
+
         const q = query(
           listingsRef,
           where("type", "==", params.categoryName),
@@ -31,7 +32,8 @@ const Category = () => {
         );
         const querySnap = await getDocs(q);
         // console.log(querySnap)
-      
+
+        let newListings = [];
 
         querySnap.forEach((doc) => {
           return newListings.push({
@@ -39,20 +41,15 @@ const Category = () => {
             data: doc.data(),
           });
         });
-      
 
-        
-      
-  
+        setListings(newListings);
         setLoading(false);
-       
       } catch (error) {
         toast.error("Could not fetch listings");
       }
     };
     fetchListings();
-    setListings(newListings)
-    console.log(listings)
+
   }, []);
   return (
     <div className="category">
@@ -63,20 +60,19 @@ const Category = () => {
             : "Places for Sale"}
         </p>
       </header>
-      {loading
-        ? (
+      {loading ? (
         <Spinner />
-      ) : listings && listings.length > 0 ? 
-          <>
-            <main>
-              <ul className="categoryListings">
-                {listings.map(listing => (
-                  <h3>{listing.data.name}</h3>
-                ))}
-              </ul>
-            </main>
-          </>
-       : (
+      ) : listings && listings.length > 0 ? (
+        <>
+          <main>
+            <ul className="categoryListings">
+              {listings.map((listing) => (
+                <h3 key={listing.id}>{listing.data.name}</h3>
+              ))}
+            </ul>
+          </main>
+        </>
+      ) : (
         <p>No Listings for {params.categoryName}</p>
       )}
     </div>
