@@ -14,35 +14,34 @@ import Category from "./pages/Category";
 
 
 function App() {
-//gt categoryjsx
-  // import useeffect,state,   useParams,
-  // import collection, getDocs,query, where, orderBy, limit, startAfter
-  // db from config
-  // toast  Spinner
-  // listings state set null
-  // loading  set true
-  // initial params
-  // effect  insert const fetchListings async function
-  // insert try catch
-  // in try listingRef = collection(db, 'listings')
-  // insert in try  const q = query(listingRef, where('type', '==', params.categoryName), orderBy('timestamp', 'desc'), limit(10))
-  // const querySnap = await getDocs(q)
-  // let listing = []
-  // querySnap.forEach((doc) => {})
-  // console.log(doc.data()
-  // check console
-  // return listings.push()
-  // pass {id: doc.id, data: doc.data()}
-  // outside of forEach,  setListing(listings)
-  //setLoading(false)
-  // toast.error('could not fetch listings)
-  // jsx .category wrap header wrap p.pageheader wrap
-  // {param.categoryName === 'rent'? 'Place for rent': 'Places for sale'}
-  // sbliing to header, {loading? <Spinner /> : listings && listings >0 ? <></>: <p>No Listings for {params.categoryName}</p>}
-  // inside <></> , insert main wrap ul.categoryListings wrap {listings.map((listing) => ( <h3>{listing.data.name}</h3>))}
-  // check 
 
-  
+//gt categoryjsx  [x]
+  // import useeffect,state,   useParams,  [x]
+  // import collection, getDocs,query, where, orderBy, limit, startAfter  [x]
+  // db from config  [x]
+  // toast  Spinner  [x]
+  // listings state set null  [x]
+  // loading  set true  [x]
+  // initial params  [x]
+  // effect  insert const fetchListings async function  [x]
+  // insert try catch  [x]
+  // in try listingRef = collection(db, 'listings')  [x]
+  // insert in try  const q = query(listingRef, where('type', '==', params.categoryName), orderBy('timestamp', 'desc'), limit(10))  [x]
+  // const querySnap = await getDocs(q)  [x]
+  // let listing  to empty array [x]
+  // querySnap.forEach((doc) => {})  [x]
+  // console.log(doc.data()  [x]
+  // check console  [x]
+  // return listings.push()  [x]
+  // pass {id: doc.id, data: doc.data()}  [x]
+  // outside of forEach,  setListing(listings)  [x]
+  //setLoading(false)  [x]
+  // toast.error('could not fetch listings)  [x]
+  // jsx .category wrap header wrap p.pageheader wrap  [x]
+  // {param.categoryName === 'rent'? 'Place for rent': 'Places for sale'}  [x]
+  // sbliing to header, {loading? <Spinner /> : listings && listings >0 ? <></>: <p>No Listings for {params.categoryName}</p>}  []
+  // inside <></> , insert main wrap ul.categoryListings wrap {listings.map((listing) => ( <h3>{listing.data.name}</h3>))}  []
+  // check   []
 
   
   return (

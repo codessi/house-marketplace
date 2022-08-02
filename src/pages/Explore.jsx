@@ -14,17 +14,17 @@ const Explore = () => {
       
       <main>
         <p className="exploreCategoryHeading">Categories</p>
-        <p className="exploreCategories">
+        <div className="exploreCategories">
           <Link to='/category/rent'>
             <img src={rentCategoryImage} alt="rent" className='exploreCategoryImg' />
             <p className="exploreCategoryName">Place for rent</p>
           </Link>
 
-          <Link to='/category/sell'>
+          <Link to='/category/sale'>
             <img src={sellCategoryImage} alt="sell" className='exploreCategoryImg' />
             <p className="exploreCategoryName">Place for sell</p>
           </Link>
-        </p>
+        </div>
       </main>
     </div>
   )
