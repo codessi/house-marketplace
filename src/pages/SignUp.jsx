@@ -118,7 +118,7 @@ const SignUp = () => {
         </div>
       </form>
       <Link to={"/sign-in"} className="registerLink">
-        Sign In Instaed
+        Sign In Instead
       </Link>
     </div>
   );

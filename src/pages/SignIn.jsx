@@ -73,7 +73,7 @@ const SignIn = () => {
           alt="show password"
           onClick={() => setShowPassword((prev) => !prev)}
         />
-        <Link to="/forgot-password" className="forgotPasswordLink">
+        <Link to="/forgot-passwords" className="forgotPasswordLink">
           Forgot Password
         </Link>
 
@@ -85,7 +85,7 @@ const SignIn = () => {
         </div>
       </form>
       <Link to={"/sign-up"} className="registerLink">
-        Sign Up Instaed
+        Sign Up Instead
       </Link>
     </div>
   );
