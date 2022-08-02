@@ -5,6 +5,7 @@ import { ReactComponent as ArrowRightIcon } from "./../assets/svg/keyboardArrowR
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { toast } from "react-toastify";
 import visibilityIcon from "./../assets/svg/visibilityIcon.svg";
+import OAuth from "../components/OAuth";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,7 +40,7 @@ const SignIn = () => {
         navigate("/");
       }
     } catch (error) {
-      toast.error("bad user credential")
+      toast.error("bad user credential");
     }
   };
 
@@ -84,6 +85,9 @@ const SignIn = () => {
           </button>
         </div>
       </form>
+
+      <OAuth />
+
       <Link to={"/sign-up"} className="registerLink">
         Sign Up Instead
       </Link>

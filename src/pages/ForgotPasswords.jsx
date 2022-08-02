@@ -5,12 +5,6 @@ import { ReactComponent as ArrowRightIcon } from "./../assets/svg/keyboardArrowR
 import { Link } from "react-router-dom";
 
 const ForgotPasswords = () => {
-  // we going to send pass words
-  // need state to store input
-  // input
-  // on submit send promise
-  //  notify by  toast
-  // need place to go
 
   const [email, setEmail] = useState("");
 
