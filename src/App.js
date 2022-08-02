@@ -14,25 +14,35 @@ import Category from "./pages/Category";
 
 
 function App() {
-// gt explore  [x]
-  // import Link  [x]
-  // import rentCatagoryImage , sellCat...  [x]
-  // jsx .explore wrap  []
-  // header wrap  []
-  // p.pageHeader cont Explore  []
-  // sibling to header,  main wrap  []
-  // p.exploreCategoryHeading cont Categories  []
-  // sibing p, .exploreCategories wrap  []
-  // Link to '/category/rent' wrap  []
-  // img src rent.. alt rent class exploreCategoryImg  []
-  // sibling img, p.exploreCategoryName cont Place for rent  []
-  // copy pasted Link, paste next and change sell from rent  []
+//gt categoryjsx
+  // import useeffect,state,   useParams,
+  // import collection, getDocs,query, where, orderBy, limit, startAfter
+  // db from config
+  // toast  Spinner
+  // listings state set null
+  // loading  set true
+  // initial params
+  // effect  insert const fetchListings async function
+  // insert try catch
+  // in try listingRef = collection(db, 'listings')
+  // insert in try  const q = query(listingRef, where('type', '==', params.categoryName), orderBy('timestamp', 'desc'), limit(10))
+  // const querySnap = await getDocs(q)
+  // let listing = []
+  // querySnap.forEach((doc) => {})
+  // console.log(doc.data()
+  // check console
+  // return listings.push()
+  // pass {id: doc.id, data: doc.data()}
+  // outside of forEach,  setListing(listings)
+  //setLoading(false)
+  // toast.error('could not fetch listings)
+  // jsx .category wrap header wrap p.pageheader wrap
+  // {param.categoryName === 'rent'? 'Place for rent': 'Places for sale'}
+  // sbliing to header, {loading? <Spinner /> : listings && listings >0 ? <></>: <p>No Listings for {params.categoryName}</p>}
+  // inside <></> , insert main wrap ul.categoryListings wrap {listings.map((listing) => ( <h3>{listing.data.name}</h3>))}
+  // check 
 
-  // creat Category.jsx under pages  []
-  // rafce  []
-  // gt app, import Category  []
-  // update category path add :categoryName  element= <Category  []
-  // 
+  
 
   
   return (
