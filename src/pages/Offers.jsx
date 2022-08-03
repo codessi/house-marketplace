@@ -28,11 +28,11 @@ const Offers = () => {
         const q = query(
           listingsRef,
           where("offer", "==", true),
-          // orderBy("timestamp", "desc"),
+          orderBy("timestamp", "desc"),
           limit(10)
         );
         const querySnap = await getDocs(q);
-        // console.log(querySnap)
+    
         toast.success('fetch success')
 
         let newListings = [];

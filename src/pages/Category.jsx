@@ -32,7 +32,7 @@ const Category = () => {
           limit(10)
         );
         const querySnap = await getDocs(q);
-        // console.log(querySnap)
+  
 
         let newListings = [];
 
