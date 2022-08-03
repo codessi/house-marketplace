@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
+import arrowRight from "../assets/svg/keyboardArrowRightIcon.svg";
+import homeIcon from "../assets/svg/homeIcon.svg";
 
 const Profile = () => {
   // what are we doing? to update profile.
@@ -29,10 +31,10 @@ const Profile = () => {
     try {
       if (auth.currentUser?.displayName !== name) {
         // update display name in Firebase
-       const res =  await updateProfile(auth?.currentUser, {
+        const res = await updateProfile(auth?.currentUser, {
           displayName: name,
-       });
-        console.log(auth)
+        });
+        console.log(auth);
 
         const userRef = doc(db, "users", auth.currentUser.uid);
         await updateDoc(userRef, { name });
@@ -96,6 +98,12 @@ const Profile = () => {
               />
             </form>
           </div>
+
+          <Link to="/create-listing" className="createListing">
+            <img src={homeIcon} alt="home" />
+            <p>Sell or rent your home</p>
+            <img src={arrowRight} alt="arrow right" />
+          </Link>
         </main>
       </div>
     </>
