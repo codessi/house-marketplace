@@ -5,18 +5,18 @@ import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 
 const CreatingListing = () => {
-  const [geolocationEnabled, setGeolocationEnabled] = useState(true);
+  const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
-    name: "",
+    name: "test",
     bedrooms: 1,
     bathrooms: 1,
     parking: false,
     furnished: false,
-    address: "",
+    address: "test",
     offer: false,
-    regularPrice: 0,
+    regularPrice: 50,
     discountedPrice: 0,
     images: {},
     latitude: 0,
@@ -77,7 +77,7 @@ const CreatingListing = () => {
     if (e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
-        images: e.target.files
+        images: e.target.files,
       }));
     }
 
@@ -85,20 +85,54 @@ const CreatingListing = () => {
       setFormData((prevState) => ({
         ...prevState,
         [e.target.id]: boolean ?? e.target.value,
-      }))
+      }));
     }
   };
 
-  setLoading(true)
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  const onSubmit = (e) => {
-    e.preventDefault()
     if (discountedPrice >= regularPrice) {
-      setLoading(false) 
-      toast.error('Discounted price needs to be less than regular price')
-      return
+      setLoading(false);
+      toast.error("Discounted price needs to be less than regular price");
+      return;
     }
-    console.log(formData)
+    if (images.length) {
+      setLoading(false);
+      toast.error("Max 6 images");
+      return;
+    }
+
+    let geolocation = {};
+    let location;
+
+    if (geolocationEnabled) {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
+      );
+
+      const data = await response.json();
+
+      geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
+      geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
+
+      location =
+        data.status === "ZERO_RESULTS"
+          ? undefined
+          : data.result[0]?.formatted_address;
+
+      if (location === undefined || location.include("undefined")) {
+        setLoading(false);
+        toast.error("please enter a correct address");
+        return;
+      }
+    } else {
+      geolocation.lat = latitude;
+      geolocation.lng = longitude;
+      location = address;
+    }
+    setLoading(false);
   };
 
   if (loading) {
@@ -248,6 +282,33 @@ const CreatingListing = () => {
             required
           />
 
+          {!geolocationEnabled && (
+            <div className="formLatLng flex">
+              <div>
+                <label className="formLabel">Latitude</label>
+                <input
+                  className="formInputSmall"
+                  type="number"
+                  id="latitude"
+                  value={latitude}
+                  onChange={onMutate}
+                  required
+                />
+              </div>
+              <div>
+                <label className="formLabel">Longitude</label>
+                <input
+                  className="formInputSmall"
+                  type="number"
+                  id="longitude"
+                  value={longitude}
+                  onChange={onMutate}
+                  required
+                />
+              </div>
+            </div>
+          )}
+
           <label htmlFor="" className="formLabel">
             Offer
           </label>
@@ -320,14 +381,11 @@ const CreatingListing = () => {
             id="images"
             onChange={onMutate}
             max={6}
-
-            required
             multiple
           />
-          <button
-            type="submit"
-            className="primaryButton createListingButton"
-          >Create Listing</button>
+          <button type="submit" className="primaryButton createListingButton">
+            Create Listing
+          </button>
         </form>
       </main>
     </div>
