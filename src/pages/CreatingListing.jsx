@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Spinner from "../components/Spinner";
+import { toast } from "react-toastify";
 
 const CreatingListing = () => {
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
@@ -88,8 +89,15 @@ const CreatingListing = () => {
     }
   };
 
+  setLoading(true)
+
   const onSubmit = (e) => {
     e.preventDefault()
+    if (discountedPrice >= regularPrice) {
+      setLoading(false) 
+      toast.error('Discounted price needs to be less than regular price')
+      return
+    }
     console.log(formData)
   };
 
