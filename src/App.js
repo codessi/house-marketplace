@@ -15,43 +15,48 @@ import CreatingListing from "./pages/CreatingListing";
 
 
 function App() {
-  // what are we doing?  making a listing page
-// before  we are making ... 
-// createListing.jsx in pages   [x]
-// bring in to app   [x]
-  // route with /create-listing  with element ...   [x]
-  // gt profile.jsx   [x]
-  // import arrowRight   [x]
-  // import homeIcon   [x]
-  // jsx above main closing, insert <Link to '/create-listing class createListing wrap   [x]
-  // img src homeIcon home   [x]
-  // sibling p cont Sell or rent your home   [x]
-  // img src arrowRight   [x]
-  // import Link   [x]
-  // gt createListing.jsx   [x]
-  // import useState   [x]
-  // formData state pass obj  type rent name '' bedrooms;  copy from repo   [x]
-  // state geolocationEnabled  true   [x]
-  // useEffect   [x]
-  // getAuth, onAuthStateChanged   [x]
-  // useNavigte, ref   [x]
-  // initial auth navigate isMounted   [x]
-  // useEffect,  add isMounted conditional   [x]
-  // insert onAuthStateChanged(auth, user => {})   [x]
-  // if user setFormData combine previous and add  userRef: user.uid   [x]
-  // else navigate('/sign-in')   [x]
-// check dev tool   []
-  // state loading false   [x]
-  // add contional outside of useEffect, if loading  spinner   []
-  //    []
-  
-  
-
-
-  
-
-
-
+// 100 []
+// gt console.cloud.google.com  []
+  // gt project -> apis & services []
+  // enable Geocoding api []
+  // gt credentials get key save somewhere []
+  // gt CreateListing.jsx []
+  // above on submit, setLoading(true) []
+  // onSubmit insert , if discount is bigger or same as regular {} []
+  // insert setLoading(false)  toast.error (insert) []
+  //'Discounted price needs to be less than regular price' []
+  // return []
+  // test []
+  // sibiling, if images.length > 6 {} []
+  // setLoading(false) toast.error('Max 6 images') return []
+  // // sibling, let geolocation = {} []
+  // let location []
+  // if (geolocationEnabled) {} else {} []
+  // insert2,  geolocation.lat = latitiude []
+  // same with longitude []
+  // location = addresss []
+  // insert1, const response = await fetch( insert*) []
+  // `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key= <apikey>` []
+  // const data = response.json() []
+  // console.log(data) []
+  // outside of if else,  setLoading(false) []
+  // test []
+  // reaplce console with, geolocation.lat = data.result[0]?.geometry.location.lat ?? 0  []
+  // do same with lng  []
+  // location = data.status ==='ZERO_RESULTS' ? undefined : data.result[0]?.formatted_address  []
+  // if(location === undefined || location.include('undefined') {})  []
+  // setLoading(false) toast.error('please enter a correct address')  []
+  // return  []
+  // test  []
+  // below location = address, console.log(geolocation, location)  []
+  // test  []
+  // delete console.log,  geolocationEnabled set to true  []
+  // put the key in env  []
+  // .env in root  []
+  // type REACT_APP_GEOCODE_API_KEY =  "<key>"  []
+  // insert in the fetch  []
+  // git igrnore   add .env   []
+  /// restart   []
   
   
   return (
