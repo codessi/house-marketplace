@@ -15,28 +15,25 @@ import CreatingListing from "./pages/CreatingListing";
 
 
 function App() {
- 
-  // gt stroge web cod firebase.google.com [x]
-  // gt createListing.jsx [x]
-  // copy imports [x]
-  // import db [x]
-  // install uuid [x]
-  // import v4 as uuidv4 from uuid [x]
-  // inside of bottom of onsubmit but above setloading(false), comment store image in fire base [x]
-  // const storeImage async function  passing image , {} [x]
-  // return new Promise((resolve, reject) => {}) [x]
-  // const storeage = getStorage() [x]
-  // const fileName = `${auth.currentUser.uid}-${image.name}-${uuid4()}` [x]
-  // const storageRef = ref(storage, 'images/' + fileName) [x]
-  // copy paste uploadTask  & .on [x]
-  // clean up comments [x]
-  // fill error reject(error) [x]
-  // reaplce console with resolve(downloadURL) [x]
-  // above setLoading(false), const imgUr = await Promise.all () [x]
-  // pass  [...images].map(image => storageImage(image) [x]
-  // .catch(() => { insert* }) [x]
-  // setLoading(false) toast.error('Images not uploaded') return  [x]
-  // test  console.log(imgUrls) []
+ // goto rule change imgUrls & data base  [x]
+  // gt createListing.jsx  [x]
+  // import addDoc, collection, serverTimestamp  [x]
+  // inside of submit, above setLoading(false), const formDataCopy = {...formData, imgUrls, geolocation, timestamp: serverTimestamp() }  [x]
+  
+  // delete formDataCopy.images  [x]
+  // delete formDataCopy.address  [x]
+  // location && (formDataCopy.location = location )  [x]
+// !formDataCopy.offer && delete formDataCopy.discountedPrice   [x]
+  
+ // const docRef == awiat add(collection(db,'listing'), formDataCopy)  [x]
+  // setLoading(false)  [x]
+  // toast.success  [x]
+  // navigate(`/category/${formDataCopy.type}/${docRef.id}`)  [x]
+
+  // get json and add some data & image from resource  []
+
+
+
 
   
   

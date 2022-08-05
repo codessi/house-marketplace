@@ -11,18 +11,20 @@ import {
 } from "firebase/storage";
 import { db } from "../firebase.config";
 import { v4 as uuidv4 } from "uuid";
+import {addDoc, collection, serverTimestamp} from "firebase/firestore"
+
 
 const CreatingListing = () => {
   const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
-    name: "test",
+    name: "",
     bedrooms: 1,
     bathrooms: 1,
     parking: false,
     furnished: false,
-    address: "test",
+    address: "",
     offer: false,
     regularPrice: 50,
     discountedPrice: 0,
@@ -143,12 +145,9 @@ const CreatingListing = () => {
       location = address;
     }
 
- 
-
     // store image in firebase
     const storeImage = async (image) => {
       return new Promise((resolve, reject) => {
-
         const storage = getStorage();
         const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
         const storageRef = ref(storage, "images/" + fileName);
@@ -157,7 +156,6 @@ const CreatingListing = () => {
         uploadTask.on(
           "state_changed",
           (snapshot) => {
-
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log("Upload is " + progress + "% done");
@@ -176,34 +174,43 @@ const CreatingListing = () => {
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
               resolve(downloadURL);
+             
             });
           }
         );
       });
     };
 
-
     const imgUrls = await Promise.all(
-      
-       [...images].map((image) => storeImage(image))
-
+      [...images].map((image) => storeImage(image))
     ).catch(() => {
-      setLoading(false)
-      toast.error("Image not uploaded")
-      return
-    })
+      setLoading(false);
+      toast.error("Image not uploaded");
+      return;
+    });
 
-    console.log("imgUrls" ,imgUrls) 
+    console.log("imgUrls", imgUrls);
+    // here
+    const formDataCopy = {
+      ...formData, imgUrls, geolocation, timestamp: serverTimestamp()
+    }
+
+    formDataCopy.locaton = address
+    delete formDataCopy.images
+    delete formDataCopy.address
+  
+    !formDataCopy.offer && delete formDataCopy.discountedPrice
+    const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
+    setLoading()
+
     setLoading(false);
+    toast.success("success")
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`)
   };
-
-
 
   if (loading) {
     return <Spinner />;
   }
-
-
 
   return (
     <div className="profile">
