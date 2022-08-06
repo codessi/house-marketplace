@@ -17,30 +17,33 @@ import Listing from "./pages/Listing";
 
 
 function App() {
+ // if loading true spinner [x]
+  // jsx on listing [x]
+  // main wrap,  .shareIconDiv []
+  // onClick funtion with navigator.clipboard.writeText(window.location.href) setShareLinkCopied(true) []
+  // setTimout(()=> setSharedLinkeCopied(false), 2000) wrap [x]
+  // img src shareIcon [x]
 
-// create Listing.jsx in page folder  [x]
-  // rafce  [x]
-  // gt app  [x]
-  // bring in listing.jsx  [x]
-  // add route path category/:categoryName/:lstingId  element listing  [x]
-  // gt listing jsx [x]
-  // useState effect Link useNavigate useParams  [x]
-  // getDoc doc from firestore  [x]
-  // getAuth from  [x]
-  // db  spinner shareIcon  [x]
-  // state listing, loading,  shareLinkCopied   set null all three  [x]
-  // initalize navigate params auth  [x]
-  //  useEffect  [x]
-  // fetchListing  async  [x]
-  // docRef doc db, 'listings, params.listingId  [x]
-  // const docSnap  await getDoc passing docRef  [x]
-  // if(docSnap file exists console the docSnaps data()  [x]
-  // and update listing state with data  [x]
-  // setLoading to false  [x]
-  // setloaindg default to true  [x]
-  // set shareLinke copied default false  [x]
-  // dependancy of useEffect navigate, params.listingId  [x]
-  
+  // sibliing to div, shareLinkedCopy true then jsx p.linkCopied cont Link Copied [x]
+
+  // sibling , .listingDetails wrap []
+  // p.listingName wrap {listing.name} - {listing.offer ? listing.discountedPrice: listing.regularPrice} [x]
+  // add comma for money [x]
+  // sibling, p.listingLocaation wrap {listing.location} []
+  // sibiling, p.listingType cont for {listing.type === 'rent' ? "Rent": "Sale"} [x]
+  // sibiling {listing.offer && (insert)} [x]
+  // p.discountprice  cont ${listing.regularPrice - listing.discountedPrice} discount [x]
+  //  sibiling to {list.offer... , ul.listingDetailsList wrap []
+  // li  {listing.bedrooms > 1 ? `${listing.bedrooms} Bedrooms` : '1 Bedroom'} [x]
+  // same for bathroom [x]
+  // parking, runished [x]
+  // sibling ul, p.listingLocationTitle cont location [x]
+  // sibling p,  {auth.currentUser?.uid !== listing.userRef && ( insert* )} []
+  // Link to  .primaryButton []
+  // to = {`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`} [x]
+
+ 
+
   
   return (
     <>

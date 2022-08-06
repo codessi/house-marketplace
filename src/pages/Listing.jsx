@@ -33,8 +33,50 @@ const Listing = () => {
     fetchListing()
   }, [navigate, params.listingId])
 
+  if (loading) {
+    return (
+      <Spinner />
+    )
+  }
+  
+
   return (
-    <div>Listing</div>
+    <main>
+      <div className="shareIconDiv" onClick={() => {
+        navigator.clipboard.writeText(window.location.href)
+        setShareLinkCopied(true)
+        setTimeout(() => setShareLinkCopied(false))
+      }}>
+        <img src={shareIcon} alt="share" />
+      </div>
+      {shareLinkCopied && <p className='linkCopied'>Link Copied</p>}
+      <div className="listingDetail">
+        <p className="listingName">
+          {listing?.name}-{listing?.offer
+            ? listing.dicountedPrice.toString().replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")
+            : listing.regularPrice.toString().replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")}
+        </p>
+        <p className="listingType">
+          {listing.type === 'rent' ?'Rent':'Sale'}
+        </p>
+        {listing.offer && (<p className="discoutPrice">${listing.regularPrice - listing.discountedPrice} discount</p>)}
+        <ul className="listingDetailsList">
+          <li>{listing.bedrooms > 1 ? `${listing.bedrooms} Bedrooms` : '1 Bedroom'}</li>
+          <li>{listing.bathrooms > 1 ? `${listing.bathrooms} Bathrooms` : '1 Bathroom'}</li>
+          <li>{listing.parking && 'Parking Spot'}</li>
+          <li>{listing.furnished && 'Furnished'}</li>
+        </ul>
+        <p className="listingLocationTitle">location</p>
+        {auth.currentUser?.uid == listing.userRef && (
+          <Link className='primaryButton' to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`}>Contact Landlord</Link> 
+        )}
+        
+
+      </div>
+
+
+      
+    </main>
   )
 }
 
