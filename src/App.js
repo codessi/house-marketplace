@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from "./components/PrivateRoute";
@@ -15,6 +16,7 @@ import CreatingListing from "./pages/CreatingListing";
 
 
 function App() {
+
  // goto rule change imgUrls & data base  [x]
   // gt createListing.jsx  [x]
   // import addDoc, collection, serverTimestamp  [x]
@@ -55,7 +57,7 @@ function App() {
         </Routes>
         <Navbar /> 
       </Router>
-      <ToastContainer />
+      <ToastContainer autoClose={1000} />
     </>
   );
 }

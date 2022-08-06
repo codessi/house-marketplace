@@ -11,8 +11,7 @@ import {
 } from "firebase/storage";
 import { db } from "../firebase.config";
 import { v4 as uuidv4 } from "uuid";
-import {addDoc, collection, serverTimestamp} from "firebase/firestore"
-
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const CreatingListing = () => {
   const [geolocationEnabled, setGeolocationEnabled] = useState(false);
@@ -32,6 +31,7 @@ const CreatingListing = () => {
     latitude: 0,
     longitude: 0,
   });
+  //
 
   const {
     type,
@@ -54,6 +54,7 @@ const CreatingListing = () => {
   const isMounted = useRef(true);
 
   useEffect(() => {
+    toast("hello", { autoClose: 1000 });
     if (isMounted) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -69,12 +70,10 @@ const CreatingListing = () => {
     return () => {
       isMounted.current = false;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    //
   }, [isMounted]);
 
   const onMutate = (e) => {
-    // set the value to the sale
-
     let boolean = null;
 
     if (e.target.value === "true") {
@@ -84,6 +83,7 @@ const CreatingListing = () => {
     if (e.target.value === "false") {
       boolean = false;
     }
+
     if (e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
@@ -94,12 +94,11 @@ const CreatingListing = () => {
     if (!e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
+
         [e.target.id]: boolean ?? e.target.value,
       }));
     }
   };
-
-  // console.log([...images])
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -145,7 +144,6 @@ const CreatingListing = () => {
       location = address;
     }
 
-    // store image in firebase
     const storeImage = async (image) => {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
@@ -174,7 +172,6 @@ const CreatingListing = () => {
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
               resolve(downloadURL);
-             
             });
           }
         );
@@ -190,22 +187,34 @@ const CreatingListing = () => {
     });
 
     console.log("imgUrls", imgUrls);
-    // here
+    // here  you will make copy or origin and add geo location time stamp
+    // annd img urls
     const formDataCopy = {
-      ...formData, imgUrls, geolocation, timestamp: serverTimestamp()
-    }
+      ...formData,
+      imgUrls,
+      geolocation,
+      timestamp: serverTimestamp(),
+    };
 
-    formDataCopy.locaton = address
-    delete formDataCopy.images
-    delete formDataCopy.address
-  
-    !formDataCopy.offer && delete formDataCopy.discountedPrice
-    const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
-    setLoading()
+    formDataCopy.locaton = address;
+    delete formDataCopy.images;
+    // you do that because it's already in colud then it give imgUrls
+    delete formDataCopy.address;
+    // you do that because
+
+    !formDataCopy.offer && delete formDataCopy.discountedPrice;
+    // check if there is no off then deletethe discounted price too
+    const docRef = await addDoc(collection(db, "listings"), formDataCopy);
+    setLoading();
+    // in db collection called listing,  add copyed form data using addDoc methat
+    // loading off
 
     setLoading(false);
-    toast.success("success")
-    navigate(`/category/${formDataCopy.type}/${docRef.id}`)
+
+    // tell it it works
+    // nevgigate it... to....
+    toast.success("success", { duration: 1000 });
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   };
 
   if (loading) {
