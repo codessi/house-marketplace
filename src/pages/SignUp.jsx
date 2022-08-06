@@ -45,7 +45,7 @@ const SignUp = () => {
       delete formDataCopy.password;
       formDataCopy.timestamp = serverTimestamp();
 
-      console.log(serverTimestamp());
+
       //
 
       await setDoc(doc(db, "users", user.uid), formDataCopy);

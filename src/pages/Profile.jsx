@@ -34,13 +34,13 @@ const Profile = () => {
         const res = await updateProfile(auth?.currentUser, {
           displayName: name,
         });
-        console.log(auth);
+     
 
         const userRef = doc(db, "users", auth.currentUser.uid);
         await updateDoc(userRef, { name });
       }
     } catch (error) {
-      console.log(error);
+  
       toast.error("Could not update profile details");
     }
   };

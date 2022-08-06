@@ -13,30 +13,33 @@ import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from "./components/PrivateRoute";
 import Category from "./pages/Category";
 import CreatingListing from "./pages/CreatingListing";
+import Listing from "./pages/Listing";
 
 
 function App() {
 
- // goto rule change imgUrls & data base  [x]
-  // gt createListing.jsx  [x]
-  // import addDoc, collection, serverTimestamp  [x]
-  // inside of submit, above setLoading(false), const formDataCopy = {...formData, imgUrls, geolocation, timestamp: serverTimestamp() }  [x]
-  
-  // delete formDataCopy.images  [x]
-  // delete formDataCopy.address  [x]
-  // location && (formDataCopy.location = location )  [x]
-// !formDataCopy.offer && delete formDataCopy.discountedPrice   [x]
-  
- // const docRef == awiat add(collection(db,'listing'), formDataCopy)  [x]
-  // setLoading(false)  [x]
-  // toast.success  [x]
-  // navigate(`/category/${formDataCopy.type}/${docRef.id}`)  [x]
-
-  // get json and add some data & image from resource  []
-
-
-
-
+// create Listing.jsx in page folder  [x]
+  // rafce  [x]
+  // gt app  [x]
+  // bring in listing.jsx  [x]
+  // add route path category/:categoryName/:lstingId  element listing  [x]
+  // gt listing jsx [x]
+  // useState effect Link useNavigate useParams  [x]
+  // getDoc doc from firestore  [x]
+  // getAuth from  [x]
+  // db  spinner shareIcon  [x]
+  // state listing, loading,  shareLinkCopied   set null all three  [x]
+  // initalize navigate params auth  [x]
+  //  useEffect  [x]
+  // fetchListing  async  [x]
+  // docRef doc db, 'listings, params.listingId  [x]
+  // const docSnap  await getDoc passing docRef  [x]
+  // if(docSnap file exists console the docSnaps data()  [x]
+  // and update listing state with data  [x]
+  // setLoading to false  [x]
+  // setloaindg default to true  [x]
+  // set shareLinke copied default false  [x]
+  // dependancy of useEffect navigate, params.listingId  [x]
   
   
   return (
@@ -45,11 +48,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
-          <Route path="/category/:categoryName" element={<Category />}/>
+          <Route path="/category/:categoryName" element={<Category />} />
+          <Route path="/category/:categoryName/:listingId" element={<Listing/>} /> 
+
           <Route path="/profile" element={<PrivateRoute/>} >
             <Route path="/profile" element={<Profile/>} />
           </Route>
-          <Route path="/create-listing" element={<CreatingListing/> } />
+          <Route path="/create-listing" element={<CreatingListing />} />
+          
+          
           
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
