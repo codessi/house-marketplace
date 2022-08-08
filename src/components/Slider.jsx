@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  collection,
-  getDocs,
-  query,
-  orderBy,
-  limit,
-  QuerySnapshot,
-} from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../firebase.config";
 import SwiperCore, {
   Navigation,
@@ -30,10 +23,12 @@ const Slider = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getFetch = async () => {
+    const fetchListings = async () => {
       const listingsRef = collection(db, "listings");
       const q = query(listingsRef, orderBy("timestamp", "desc"), limit(5));
       const querySnap = await getDocs(q);
+
+      let listings = [];
       querySnap.forEach((doc) =>
         listings.push({
           id: doc.id,
@@ -42,14 +37,15 @@ const Slider = () => {
       );
       setListings(listings);
       setLoading(false);
-      console.log('listing ', listings);
     };
-    let listings = [];
 
-    getFetch();
+    fetchListings();
   }, []);
 
-  if (loading) <Spinner />;
+  console.log("listings ", listings);
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     listings && (
@@ -65,23 +61,29 @@ const Slider = () => {
             disableOnInteraction: false,
           }}
         >
-          {listings && listingsmap((item, index) => (
-            <SwiperSlide key={index}>
+          {listings.map(({ data, id }) => (
+            <SwiperSlide
+              key={id}
+              onClick={() => navigate(`/category/${data.type}/${id}`)}
+            >
               <div
                 style={{
-                  background: `url(${item.imgUrls[0]}) center no-repeat`,
+                  background: `url(${data.imgUrls[0]}) center no-repeat`,
                   backgroundSize: "cover",
                 }}
                 className="swiperSlideDiv"
-              ></div>
+              >
+                <p className="swiperSlideText">{data.name}</p>
+                <p className="swiperSlidePrice">${data.discountedPrice ?? data.regularPrice}{' '}{data.type ==="rent" && "/ month"}
+                </p>
+                
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </>
     )
   );
-
-  return <div>Slider</div>;
 };
 
 export default Slider;

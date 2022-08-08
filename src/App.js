@@ -42,22 +42,19 @@ function App() {
   // sibling, setListings(listings) setLoading(false)[x]
   // wrap everything inside of effect,  const fetchListings[x]
   // call fetchListings[x]
-  // console.log(listing)[]
+  // console.log(listing)[x]
   // check[x]
   // if(locading) <Spinner />[x]
-  // return  listing && (insert*)[]
+  // return  listing && (insert*)[x]
   // insert <> wrap[]
   // .exploreHeading cont Recommended[x]
   // sibling, <Swiper ...  refer to listing.jsx[x]
   //  add SwiperSlide onClick={() => navigate(`/category/${data.type}/${di}`)}[]
-  // sibling to map, .swiperSlideDiv style ={{background: `url(${data.imgUrls[0]}) center no-repeat`, backgroundSize: 'cover' }} wrap []
-  // p.swiperSlideText cont data.name[]
-  // sibling p.swiperSlidePrice cont  ${data.discountedPrice ?? data.regularPrice}[]
-  // sibiling, {data.type === 'rent' && '/ month'}[]
+  // sibling to map, .swiperSlideDiv style ={{background: `url(${data.imgUrls[0]}) center no-repeat`, backgroundSize: 'cover' }} wrap [x]
+  // p.swiperSlideText cont data.name[x]
+  // sibling p.swiperSlidePrice cont  ${data.discountedPrice ?? data.regularPrice}[x]
+  // sibiling, {data.type === 'rent' && '/ month'} [x]
   
-
-
-
 
   return (
     <>
@@ -79,6 +76,11 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-passwords" element={<ForgotPasswords /> } />
         </Routes>
+        <br />
+        <br />
+        <br />
+        <br />
+  
         <Navbar /> 
       </Router>
       <ToastContainer autoClose={1000} />
