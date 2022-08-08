@@ -186,7 +186,6 @@ const CreatingListing = () => {
       return;
     });
 
-    console.log("imgUrls", imgUrls);
     // here  you will make copy or origin and add geo location time stamp
     // annd img urls
     const formDataCopy = {

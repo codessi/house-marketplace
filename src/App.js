@@ -19,21 +19,45 @@ import Contact from "./pages/Contact";
 
 function App() {
 
-  // npm i swiper@6.8.1  [x]
-  // gt listing.jsx  [x]
-  // import swiperCore, {Navigation, Pagination, Scrollbar, A11y} from 'swiper'  [x]
-  // import {Swiper, SwiperSlide} from 'swiper/react'  [x]
-  // import 'swiper/swiper-bundle.css'  [x]
-  // jsx under main opening, Swiper and  [x]
-  // add slidesPerView = {1} pagination={{clickable: true}} wrap  [x]
-  // {listings.imgUrls.map  [x]
-  // pass url, index  [x]
-  // insert jsx  <SwiperSlide with key={index} wrap  [x]
-  // div with style ={{}}  [x]
-  // background:  template literal -> url from imgUrls[] center no-repeat , backgroundSize: cover   [x]
-  // .swiperSlideDiv  [x]
-  // check   [x]
-  // gt top, SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])  []
+  // make compoenet Slider.jsx[x]
+  // rafce[x]
+  // gt explore[x]
+  // import and insert below main opening tag[x]
+  // gt slider[x]
+  // import state effect navigate[x]
+  // collection getDocs, query, orderBy, limit firestore[x]
+  // db[x]
+  // swiper stuff -copy from listing[x]
+  // spinner[x]
+  // state loading true listings null[x]
+  // initialize navigate[x]
+  // useEffect(() => {}, [])[x]
+  // insert collection passing db and 'listings'  assign const listingsRef[x]
+  // const q assign query (listingRef, orderBy('timestamp', 'desc'), limit(5))[x]
+  // const querySnap = await getDocs(q)[x]
+
+  // let listings = [][x]
+  // querySnap.forEach(doc => listings.push(insert *))[x]
+  // {id: doc.id, data: doc.data()}[x]
+  // sibling, setListings(listings) setLoading(false)[x]
+  // wrap everything inside of effect,  const fetchListings[x]
+  // call fetchListings[x]
+  // console.log(listing)[]
+  // check[x]
+  // if(locading) <Spinner />[x]
+  // return  listing && (insert*)[]
+  // insert <> wrap[]
+  // .exploreHeading cont Recommended[x]
+  // sibling, <Swiper ...  refer to listing.jsx[x]
+  //  add SwiperSlide onClick={() => navigate(`/category/${data.type}/${di}`)}[]
+  // sibling to map, .swiperSlideDiv style ={{background: `url(${data.imgUrls[0]}) center no-repeat`, backgroundSize: 'cover' }} wrap []
+  // p.swiperSlideText cont data.name[]
+  // sibling p.swiperSlidePrice cont  ${data.discountedPrice ?? data.regularPrice}[]
+  // sibiling, {data.type === 'rent' && '/ month'}[]
+  
+
+
+
 
   return (
     <>

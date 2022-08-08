@@ -44,7 +44,7 @@ const Category = () => {
         });
 
         setListings(newListings);
-        console.log('listing is ',newListings)
+
         setLoading(false);
       } catch (error) {
         toast.error("Could not fetch listings");

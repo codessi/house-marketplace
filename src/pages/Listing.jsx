@@ -6,6 +6,7 @@ import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import shareIcon from "../assets/svg/shareIcon.svg";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -29,13 +30,13 @@ const Listing = () => {
 
   useEffect(() => {
     const fetchListing = async () => {
-      console.log("useEffect");
+
 
       const docRef = doc(db, "listings", params.listingId);
       const docSnap = await getDoc(docRef);
       console.log("docSnap.exists() ", docSnap.exists());
       if (docSnap.exists()) {
-        console.log(docSnap.data());
+
         setListing(docSnap.data());
         setLoading(false);
       }
