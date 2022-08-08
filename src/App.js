@@ -16,25 +16,25 @@ import CreatingListing from "./pages/CreatingListing";
 import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
 
+
 function App() {
 
-// gt leefletjs.com   [x]
-  // start guide tutorial  [x]
-  // get css link  [x]
-  // insert index. html  [x]
-  // npm i install leaflet react-leaflet  [x]
+  // npm i swiper@6.8.1  [x]
   // gt listing.jsx  [x]
-  // import MapContainer Marker Popup TileLayer from react-leaflet  [x]
-  // check browser  []
+  // import swiperCore, {Navigation, Pagination, Scrollbar, A11y} from 'swiper'  [x]
+  // import {Swiper, SwiperSlide} from 'swiper/react'  [x]
+  // import 'swiper/swiper-bundle.css'  [x]
+  // jsx under main opening, Swiper and  [x]
+  // add slidesPerView = {1} pagination={{clickable: true}} wrap  [x]
+  // {listings.imgUrls.map  [x]
+  // pass url, index  [x]
+  // insert jsx  <SwiperSlide with key={index} wrap  [x]
+  // div with style ={{}}  [x]
+  // background:  template literal -> url from imgUrls[] center no-repeat , backgroundSize: cover   [x]
+  // .swiperSlideDiv  [x]
+  // check   [x]
+  // gt top, SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])  []
 
-  // gt p.listingLocationTitle , sibling add,  .leafletContainer wrap  [x]
-  // <MapContainer style = {{heigt: '100%', width: '100%'}} center={[listing.geolocation.lat, listing.geolocation.lng] zoom ={13} scrollWheelZoom ={false}} wrap  [x]
-  // <TileLayer attribution = '&copy; <a href="http://osm.org/copyright"> OpenStreetMap <a/> contributors' url='https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png />   https://  react-leaflet.js.org/  [x]
-
-  // sibling, <Marker position = { [listing.geolocation.lat, listing.geolocation.lng] }  wrap  [x]
-  // <Popup>{listing.location} wrap  [x]
-  //   []
-  
   return (
     <>
       <Router>

@@ -6,6 +6,17 @@ import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import shareIcon from "../assets/svg/shareIcon.svg";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css/bundle";
+// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const Listing = () => {
   const [listing, setListing] = useState({});
@@ -22,7 +33,7 @@ const Listing = () => {
 
       const docRef = doc(db, "listings", params.listingId);
       const docSnap = await getDoc(docRef);
-console.log('docSnap.exists() ', docSnap.exists())
+      console.log("docSnap.exists() ", docSnap.exists());
       if (docSnap.exists()) {
         console.log(docSnap.data());
         setListing(docSnap.data());
@@ -38,6 +49,29 @@ console.log('docSnap.exists() ', docSnap.exists())
 
   return (
     <main>
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        style={{ height: "300px" }}
+        autoplay={{
+          delay: 4500,
+          disableOnInteraction: false,
+        }}
+      >
+        {listing.imgUrls.map((url, index) => (
+          <SwiperSlide key={index}>
+            <div
+              style={{
+                background: `url(${url}) center no-repeat`,
+                backgroundSize: "cover",
+              }}
+              className="swiperSlideDiv"
+            ></div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
       <div
         className="shareIconDiv"
         onClick={() => {
@@ -94,10 +128,10 @@ console.log('docSnap.exists() ', docSnap.exists())
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[listing.geolocation.lat, listing.geolocation.lng]}>
-              <Popup>
-                {listing.location}
-              </Popup>
+            <Marker
+              position={[listing.geolocation.lat, listing.geolocation.lng]}
+            >
+              <Popup>{listing.location}</Popup>
             </Marker>
           </MapContainer>
         </div>
