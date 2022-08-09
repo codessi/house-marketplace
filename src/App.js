@@ -29,13 +29,13 @@ function App() {
   // change name onFetchMoreListings  [x]
   // inside of query parameter, add startAfter pass lastFechedListing  [x]
   // change setListings(prev => [...prv, ... listings])  [x]
-// below closing main,  []
-  // br / x3  []
-  // {lastFetchedListing && ( *insert )}  []
-  // p.loadMore cont Load More  onClick = {onFetchMoreLisints}  []
-  // change limit 2  in query  []
-  // test on browser   []
-  // apply to offer   []
+// below closing main,  [x]
+  // br / x3  [x]
+  // {lastFetchedListing && ( *insert )}  [x]
+  // p.loadMore cont Load More  onClick = {onFetchMoreLisints}  [x]
+  // change limit 2  in query  [x]
+  // test on browser   [x]
+  // apply to offer   [x]
 
   
 
