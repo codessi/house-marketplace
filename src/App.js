@@ -15,29 +15,25 @@ import Category from "./pages/Category";
 import CreatingListing from "./pages/CreatingListing";
 import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
+import EditListing from "./pages/EditListing";
 
 
 function App() {
 
-  // gt Category.jsx   []
-  // import startAfter firestore  [x]
-  // state lastFetchedListing null  [x]
-  // inside of usef effect below querySnap, create const lastVisible = querySnap.docs[querySnap.docs.length -1 ]  [x]
-  // setLastFechedListing(lastVisible)  [x]
-  // copy the funtion only fetchListings  [x]
-  // paste outside of useEffect  [x]
-  // change name onFetchMoreListings  [x]
-  // inside of query parameter, add startAfter pass lastFechedListing  [x]
-  // change setListings(prev => [...prv, ... listings])  [x]
-// below closing main,  [x]
-  // br / x3  [x]
-  // {lastFetchedListing && ( *insert )}  [x]
-  // p.loadMore cont Load More  onClick = {onFetchMoreLisints}  [x]
-  // change limit 2  in query  [x]
-  // test on browser   [x]
-  // apply to offer   [x]
+// gt firestore db rules  [x]
+  // dulplcate delete rule  [x]
+  //  change name to update  [x]
+  // create EditListing.jsx  [x]
+  // rafce  [x]
+  // create route called '/edit-listing/:listingId  [x]
+  // gt ListingItems [x]
+  // import reactComp as editIcon  [x]
+  // add prop onEdit  [x]
+  // above closing tag of li, {onEdit && <EditIcon className = "editIcon"  onClick={() => onEdit(id)} />}  [x]
+  // gt profile  [x]
+  // gt listing.map..., add onEdit = {()=> onEdit(listing.id)}  [x]
 
-  
+  // above return, create const onEdit functino that passing listingId and excute navigate(`/edit-listing/${listingId}`)  [x]
 
   return (
     <>
@@ -46,7 +42,8 @@ function App() {
           <Route path="/" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/category/:categoryName" element={<Category />} />
-          <Route path="/category/:categoryName/:listingId" element={<Listing/>} /> 
+          <Route path="/category/:categoryName/:listingId" element={<Listing />} /> 
+          <Route path="/edit-listing/:listingId" element={<EditListing />} />
 
           <Route path="/profile" element={<PrivateRoute/>} >
             <Route path="/profile" element={<Profile/>} />
