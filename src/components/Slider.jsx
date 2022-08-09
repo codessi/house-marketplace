@@ -42,7 +42,10 @@ const Slider = () => {
     fetchListings();
   }, []);
 
-  console.log("listings ", listings);
+  if (listings.length === 0) {
+   return <></>
+ }
+
   if (loading) {
     return <Spinner />;
   }
