@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
+import {
+  doc,
+  updateDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import arrowRight from "../assets/svg/keyboardArrowRightIcon.svg";
 import homeIcon from "../assets/svg/homeIcon.svg";
+import ListingItem from "../components/ListingItem";
 
 const Profile = () => {
-  // what are we doing? to update profile.
-
   const auth = getAuth();
   const navigate = useNavigate();
 
@@ -17,6 +25,33 @@ const Profile = () => {
     name: auth.currentUser?.displayName,
     email: auth.currentUser?.email,
   });
+
+  const [loading, setLoading] = useState(true);
+  const [listings, setListings] = useState(null);
+
+  useEffect(() => {
+    const fetchUserListings = async () => {
+      const listingsRef = collection(db, "listings");
+      const q = query(
+        listingsRef,
+        where("userRef", "==", auth.currentUser.uid),
+        orderBy("timestamp", "desc")
+      );
+
+      const querySnap = await getDocs(q);
+      let listings = [];
+
+      querySnap.forEach((doc) => {
+        return listings.push({ id: doc.id, data: doc.data() });
+      });
+
+      setListings(listings);
+      setLoading(false);
+    };
+    fetchUserListings()
+    
+
+  }, [auth.currentUser?.uid]);
 
   const [changeDetails, setChangeDetails] = useState(false);
 
@@ -34,13 +69,11 @@ const Profile = () => {
         const res = await updateProfile(auth?.currentUser, {
           displayName: name,
         });
-     
 
         const userRef = doc(db, "users", auth.currentUser.uid);
         await updateDoc(userRef, { name });
       }
     } catch (error) {
-  
       toast.error("Could not update profile details");
     }
   };
@@ -50,6 +83,18 @@ const Profile = () => {
       ...pre,
       [e.target.id]: e.target.value,
     }));
+  };
+
+  const onDelete = async (listingId) => {
+    if (window.confirm("Are your sure you want to delete?")) {
+      await deleteDoc(doc(db, "listings", listingId));
+      const updatedListings = listings.filter((listing) => {
+       return  listing.id !== listingId;
+      });
+      setListings(updatedListings)
+      toast.success('Successfully delete listing')
+    }
+
   };
 
   return (
@@ -104,6 +149,21 @@ const Profile = () => {
             <p>Sell or rent your home</p>
             <img src={arrowRight} alt="arrow right" />
           </Link>
+
+          {!loading && listings?.length > 0 && (
+            <>
+              <p className="listingText">Your Listings</p>
+              <ul className="listingList"></ul>
+              {listings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                  onDelete={() => onDelete(listing.id)}
+                />
+              ))}
+            </>
+          )}
         </main>
       </div>
     </>

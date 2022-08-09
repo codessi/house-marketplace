@@ -60,7 +60,7 @@ const Listing = () => {
           disableOnInteraction: false,
         }}
       >
-        {listing.imgUrls.map((url, index) => (
+        {listing?.imgUrls.map((url, index) => (
           <SwiperSlide key={index}>
             <div
               style={{
@@ -91,7 +91,7 @@ const Listing = () => {
             ? listing.discountedPrice
                 .toString()
                 .replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")
-            : listing.regularPrice
+            : listing?.regularPrice
                 .toString()
                 .replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")}
         </p>
@@ -130,9 +130,9 @@ const Listing = () => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-              position={[listing.geolocation.lat, listing.geolocation.lng]}
+              position={[listing?.geolocation?.lat, listing.geolocation.lng]}
             >
-              <Popup>{listing.location}</Popup>
+              <Popup>{listing?.location}</Popup>
             </Marker>
           </MapContainer>
         </div>
