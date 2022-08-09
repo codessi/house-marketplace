@@ -17,6 +17,7 @@ import ListingItem from "../components/ListingItem";
 const Offers = () => {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [lastFetchedListing, setLastFetchedListing] = useState(null)
 
   const params = useParams();
   
@@ -29,9 +30,14 @@ const Offers = () => {
           listingsRef,
           where("offer", "==", true),
           orderBy("timestamp", "desc"),
-          limit(10)
+          limit(2), 
+      
         );
         const querySnap = await getDocs(q);
+
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1]
+        
+        setLastFetchedListing(lastVisible)
     
         toast.success('fetch success')
 
@@ -54,6 +60,43 @@ const Offers = () => {
     fetchListings();
 
   }, []);
+
+  const onFetchMoreListings = async () => {
+    try {
+      const listingsRef = collection(db, "listings");
+
+      const q = query(
+        listingsRef,
+        where("offer", "==", true),
+        orderBy("timestamp", "desc"),
+        limit(10), 
+        startAfter(lastFetchedListing)
+    
+      );
+      const querySnap = await getDocs(q);
+
+      const lastVisible = querySnap.docs[querySnap.docs.length - 1]
+      
+      setLastFetchedListing(lastVisible)
+  
+      toast.success('fetch success')
+
+      let newListings = [];
+
+      querySnap.forEach((doc) => {
+        return newListings.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      });
+
+      setListings([...listings, ...newListings]);
+      setLoading(false);
+    } catch (error) {
+      toast.error("Could not fetch listings");
+      setLoading(false);
+    }
+  };
   return (
     <div className="category">
       <header>
@@ -71,7 +114,13 @@ const Offers = () => {
                   <ListingItem listing={listing.data} id={listing.id} key={listing.id} />
               ))}
             </ul>
-          </main>
+            </main>
+            <br />
+            <br />
+            <br />
+            {lastFetchedListing && (
+              <p className="loadMore" onClick={onFetchMoreListings}>Load More</p>
+            )}
         </>
       ) : (
         <p>No Listings for Offers</p>

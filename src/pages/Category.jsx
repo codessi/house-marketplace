@@ -17,6 +17,7 @@ import ListingItem from "../components/ListingItem";
 const Category = () => {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [lastFetchedListing, setLastFetchedListing] = useState(null)
 
   const params = useParams();
   
@@ -29,10 +30,12 @@ const Category = () => {
           listingsRef,
           where("type", "==", params.categoryName),
           orderBy("timestamp", "desc"),
-          limit(10)
+          limit(2)
         );
         const querySnap = await getDocs(q);
-  
+
+        const lastVisible = querySnap.docs[querySnap.docs.length-1]
+          setLastFetchedListing(lastVisible)
 
         let newListings = [];
 
@@ -53,6 +56,40 @@ const Category = () => {
     fetchListings();
 
   }, []);
+
+  const onFetchMoreListings = async () => {
+    try {
+      const listingsRef = collection(db, "listings");
+
+      const q = query(
+        listingsRef,
+        where("type", "==", params.categoryName),
+        orderBy("timestamp", "desc"),
+        limit(10),
+        startAfter(lastFetchedListing)
+      );
+      const querySnap = await getDocs(q);
+
+      const lastVisible = querySnap.docs[querySnap.docs.length-1]
+
+      setLastFetchedListing(lastVisible)
+      let newListings = [];
+
+      querySnap.forEach((doc) => {
+        return newListings.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      });
+
+      setListings([...listings, ...newListings]);
+
+      setLoading(false);
+    } catch (error) {
+      toast.error("Could not fetch listings");
+    }
+  };
+
   return (
     <div className="category">
       <header>
@@ -72,7 +109,14 @@ const Category = () => {
                   <ListingItem listing={listing.data} id={listing.id} key={listing.id} />
               ))}
             </ul>
-          </main>
+            </main>
+        
+            {lastFetchedListing && (
+              <p className="loadMore" onClick = {onFetchMoreListings}>Load More</p>
+            )}
+            <br />
+            <br />
+            <br />
         </>
       ) : (
         <p>No Listings for {params.categoryName}</p>
