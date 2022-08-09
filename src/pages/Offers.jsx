@@ -30,7 +30,7 @@ const Offers = () => {
           listingsRef,
           where("offer", "==", true),
           orderBy("timestamp", "desc"),
-          limit(2), 
+          limit(10), 
       
         );
         const querySnap = await getDocs(q);

@@ -54,7 +54,7 @@ const CreatingListing = () => {
   const isMounted = useRef(true);
 
   useEffect(() => {
-    toast("hello", { autoClose: 1000 });
+    
     if (isMounted) {
       onAuthStateChanged(auth, (user) => {
         if (user) {

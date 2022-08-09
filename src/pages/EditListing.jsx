@@ -89,7 +89,7 @@ const EditListing = () => {
 // adding  user id to create
 
   useEffect(() => {
-    toast("hello", { autoClose: 1000 });
+   
     if (isMounted) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
