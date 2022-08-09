@@ -31,7 +31,7 @@ const CreatingListing = () => {
     latitude: 0,
     longitude: 0,
   });
-  //
+  
 
   const {
     type,
@@ -70,7 +70,7 @@ const CreatingListing = () => {
     return () => {
       isMounted.current = false;
     };
-    //
+    
   }, [isMounted]);
 
   const onMutate = (e) => {
@@ -186,8 +186,6 @@ const CreatingListing = () => {
       return;
     });
 
-    // here  you will make copy or origin and add geo location time stamp
-    // annd img urls
     const formDataCopy = {
       ...formData,
       imgUrls,
@@ -197,21 +195,14 @@ const CreatingListing = () => {
 
     formDataCopy.locaton = address;
     delete formDataCopy.images;
-    // you do that because it's already in colud then it give imgUrls
     delete formDataCopy.address;
-    // you do that because
 
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
-    // check if there is no off then deletethe discounted price too
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
     setLoading();
-    // in db collection called listing,  add copyed form data using addDoc methat
-    // loading off
 
     setLoading(false);
 
-    // tell it it works
-    // nevgigate it... to....
     toast.success("success", { duration: 1000 });
     navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   };

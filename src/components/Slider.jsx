@@ -13,8 +13,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import Spinner from "./Spinner";
 
-// import Spinner from './Spinner';
-
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const Slider = () => {
   const [loading, setLoading] = useState(true);

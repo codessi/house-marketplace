@@ -20,36 +20,6 @@ import EditListing from "./pages/EditListing";
 
 function App() {
 
-// gt edit listing jsx  [x]
-  // gt createListing  [x]
-  // paste  [x]
-  // replace create with edit and Edit  [x]
-  // import do and updateDoc getDoc  [x]
-  // state listing  [x]
-  // add another useEffect  []
-  // pass function excute  setloading(true)  []
-  // const fetchListing = async() => { }  [x]
-  // docRef = doc(db, 'listings',params.listingId)  [x]
-  // import and inital params  [x]
-  // const docSnap = await getDoc(docRef)  [x]
-  // if docSnap.exists() {*}  [x]
-  // insert, setListing(docSnap.data())  [x]
-  // setLoading(false)  [x]
-  // else { navigate{'/'} toast.error('Listing does not exist')}  [x]
-  // check components  [x]
-  // inside of if docSnap... , setFormData({...docSnap.data(), address: docSnap.data().location})  [x]
-  // add another useEffect(() => {*})  [x]
-  // insert if listing && listing.userRef !== auth.currentUser.uid  [x]
-  // excute toast.error("You can not edit that listing")  [x]
-  // navigate('/' )  [x]
-  // gt onsubmit gt const docRef and delete addDoc colletion  [x]
-  // create docRef = doc(db, 'listings', params.listingId)  [x]
-  // await updateDoc(docRef, formDataCopy)  [x]
-  // delete unused imports  []
-  // test with new  [x]
-  // gt slider.jsx  [x]
-  // above loading, if(lisings.length === 0){return <> </>}  [x]
-
   return (
     <>
       <Router>
