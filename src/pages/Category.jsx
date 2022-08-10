@@ -13,14 +13,16 @@ import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 import ListingItem from "../components/ListingItem";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import "swiper/css/bundle";
 
 const Category = () => {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [lastFetchedListing, setLastFetchedListing] = useState(null)
+  const [lastFetchedListing, setLastFetchedListing] = useState(null);
 
   const params = useParams();
-  
+
   useEffect(() => {
     const fetchListings = async () => {
       try {
@@ -34,8 +36,8 @@ const Category = () => {
         );
         const querySnap = await getDocs(q);
 
-        const lastVisible = querySnap.docs[querySnap.docs.length-1]
-          setLastFetchedListing(lastVisible)
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+        setLastFetchedListing(lastVisible);
 
         let newListings = [];
 
@@ -54,7 +56,6 @@ const Category = () => {
       }
     };
     fetchListings();
-
   }, []);
 
   const onFetchMoreListings = async () => {
@@ -70,9 +71,9 @@ const Category = () => {
       );
       const querySnap = await getDocs(q);
 
-      const lastVisible = querySnap.docs[querySnap.docs.length-1]
+      const lastVisible = querySnap.docs[querySnap.docs.length - 1];
 
-      setLastFetchedListing(lastVisible)
+      setLastFetchedListing(lastVisible);
       let newListings = [];
 
       querySnap.forEach((doc) => {
@@ -103,20 +104,43 @@ const Category = () => {
         <Spinner />
       ) : listings && listings.length > 0 ? (
         <>
-          <main>
-            <ul className="categoryListings">
+          <div className="category-listing-container">
+            <main>
+              <ul className="categoryListings">
                 {listings.map((listing) => (
-                  <ListingItem listing={listing.data} id={listing.id} key={listing.id} />
-              ))}
-            </ul>
+                  <ListingItem
+                    listing={listing.data}
+                    id={listing.id}
+                    key={listing.id}
+                  />
+                ))}
+              </ul>
+              {lastFetchedListing && (
+                <p className="loadMore" onClick={onFetchMoreListings}>
+                  Load More
+                </p>
+              )}
+       
             </main>
-        
-            {lastFetchedListing && (
-              <p className="loadMore" onClick = {onFetchMoreListings}>Load More</p>
-            )}
-            <br />
-            <br />
-            <br />
+
+            <div className="leafletContainer">
+              <MapContainer
+                style={{ height: "100%", width: "100%" }}
+                // center={[listing.geolocation.lat, listing.geolocation.lng]}
+                center={[34.076160894634135, -118.33566945328269]}
+                zoom={13}
+                scrollWheelZoom={false}
+              >
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[34.076160894634135, -118.33566945328269]}>
+                  {/* <Popup>{listing?.location}</Popup> */}
+                </Marker>
+              </MapContainer>
+            </div>
+          </div>
         </>
       ) : (
         <p>No Listings for {params.categoryName}</p>
