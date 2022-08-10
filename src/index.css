@@ -589,7 +589,8 @@ button {
 
 .leafletContainer {
   height: 300px;
-  width: 600px;
+  /* width: 600px; */
+  width: 100%;
   margin: 0 auto;
 overflow-x: hidden;
 margin-bottom: 3rem;
@@ -607,7 +608,7 @@ margin-bottom: 3rem;
     position: relative;
 }
 .category-main{
-  width: 50%;
+ 
   height: 100vh;
   overflow: scroll;
 }
@@ -621,6 +622,9 @@ margin-bottom: 3rem;
   
      top: 0;
     right: 0;
+  }
+  .category-main{
+    width: 50%;
   }
 }
 @media screen and (min-width:990px) {

@@ -130,7 +130,9 @@ const Category = () => {
                 <p className="loadMore" onClick={onFetchMoreListings}>
                   Load More
                 </p>
-              )}
+                )}
+                <br />
+                <br/>
             </main>
 
             <div className="leafletContainer ">
