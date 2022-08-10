@@ -123,7 +123,7 @@ const Category = () => {
        
             </main>
 
-            <div className="leafletContainer">
+            <div className="leafletContainer ">
               <MapContainer
                 style={{ height: "100%", width: "100%" }}
                 // center={[listing.geolocation.lat, listing.geolocation.lng]}

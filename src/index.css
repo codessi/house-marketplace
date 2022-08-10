@@ -521,7 +521,7 @@ button {
 }
 
 .listingDetails {
-  margin-bottom: 10rem;
+  /* margin-bottom: 10rem; */
 }
 
 .shareIconDiv {
@@ -588,12 +588,26 @@ button {
 }
 
 .leafletContainer {
-  height: 200px;
+  height: 300px;
+  width: 600px;
+  margin: 0 auto;
+overflow-x: hidden;
+margin-bottom: 3rem;
+
+  position: relative;
+}
+
+.leafletContainer-listing{
+    height: 300px;
+    width: 600px;
+    margin: 0 auto;
   overflow-x: hidden;
   margin-bottom: 3rem;
  
     position: relative;
 }
+
+
 @media (min-width: 1024px) {
   .leafletContainer {
     height: 400px;
@@ -603,6 +617,12 @@ button {
      top: 0;
     right: 0;
   }
+}
+@media screen and (min-width:990px) {
+  .infoGroup{
+  display: flex;
+  justify-content: space-around;
+}
 }
 
 .linkCopied {

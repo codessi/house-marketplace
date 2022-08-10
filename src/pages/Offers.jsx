@@ -39,7 +39,6 @@ const Offers = () => {
         
         setLastFetchedListing(lastVisible)
     
-        toast.success('fetch success')
 
         let newListings = [];
 

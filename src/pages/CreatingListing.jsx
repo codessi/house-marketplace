@@ -75,6 +75,7 @@ const CreatingListing = () => {
 
   const onMutate = (e) => {
     let boolean = null;
+    let number = e.targevalue
 
     if (e.target.value === "true") {
       boolean = true;
@@ -95,7 +96,7 @@ const CreatingListing = () => {
       setFormData((prevState) => ({
         ...prevState,
 
-        [e.target.id]: boolean ?? e.target.value,
+        [e.target.id]: boolean !== null ? boolean : isNaN(e.target.valueAsNumber) ?   e.target.value: e.target.valueAsNumber
       }));
     }
   };
