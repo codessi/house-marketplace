@@ -85,8 +85,8 @@ const Listing = () => {
       <div className="infoGroup">
         <div className="listingDetails">
           <p className="listingName">
-            {listing?.name}-
-            {listing?.offer
+            {listing?.name}- 
+            ${listing?.offer
               ? listing.discountedPrice
                   .toString()
                   .replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")
@@ -94,6 +94,7 @@ const Listing = () => {
                   .toString()
                   .replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")}
           </p>
+          <p className="listingLocation">{listing.address}</p>
           <p className="listingType">
             {listing.type === "rent" ? "Rent" : "Sale"}
           </p>

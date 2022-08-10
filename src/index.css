@@ -606,6 +606,11 @@ margin-bottom: 3rem;
  
     position: relative;
 }
+.category-main{
+  width: 50%;
+  height: 100vh;
+  overflow: scroll;
+}
 
 
 @media (min-width: 1024px) {

@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 import {doc, updateDoc,  serverTimestamp, getDoc } from "firebase/firestore";
 
 const EditListing = () => {
-  const [geolocationEnabled, setGeolocationEnabled] = useState(false);
+  const [geolocationEnabled, setGeolocationEnabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
@@ -229,7 +229,7 @@ const EditListing = () => {
       timestamp: serverTimestamp(),
     };
 
-    formDataCopy.locaton = address;
+    formDataCopy.location = address;
     delete formDataCopy.images;
 
     delete formDataCopy.address;

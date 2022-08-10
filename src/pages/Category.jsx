@@ -13,7 +13,7 @@ import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 import ListingItem from "../components/ListingItem";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Tooltip, Popup, TileLayer } from "react-leaflet";
 import "swiper/css/bundle";
 
 const Category = () => {
@@ -57,6 +57,17 @@ const Category = () => {
     };
     fetchListings();
   }, []);
+
+
+  const geoArray = listings?.map((listing) => {
+    return [
+      listing?.data.name,
+      listing?.data.geolocation.lat,
+      listing?.data.geolocation.lng,
+    ];
+  });
+
+  console.log(listings);
 
   const onFetchMoreListings = async () => {
     try {
@@ -105,7 +116,7 @@ const Category = () => {
       ) : listings && listings.length > 0 ? (
         <>
           <div className="category-listing-container">
-            <main>
+            <main className="category-main">
               <ul className="categoryListings">
                 {listings.map((listing) => (
                   <ListingItem
@@ -120,7 +131,6 @@ const Category = () => {
                   Load More
                 </p>
               )}
-       
             </main>
 
             <div className="leafletContainer ">
@@ -128,16 +138,26 @@ const Category = () => {
                 style={{ height: "100%", width: "100%" }}
                 // center={[listing.geolocation.lat, listing.geolocation.lng]}
                 center={[34.076160894634135, -118.33566945328269]}
-                zoom={13}
+                zoom={10}
                 scrollWheelZoom={false}
               >
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[34.076160894634135, -118.33566945328269]}>
-                  {/* <Popup>{listing?.location}</Popup> */}
-                </Marker>
+                  {listings.map((listing) => {
+                  const {lat, lng} = listing.data.geolocation
+                  return (
+                    <Marker eventHandlers={{
+                      click: (e) => {
+                        window.open(`${listing.data.type}/${listing.id}`, '_blank', 'noopener,noreferrer')
+                      },
+                    }} key={listing.id} position={[lat, lng]}>
+                      <Tooltip >{listing.data.name}</Tooltip>
+                    </Marker>
+                  );
+                })}
+            
               </MapContainer>
             </div>
           </div>
