@@ -9,7 +9,7 @@ const ListingItem = ({ listing, id, onDelete, onEdit }) => {
 
   return (
     <li className="categoryListing">
-      <Link to={`/category/${listing.type}`} className="categoryListingLink">
+      <Link to={`/category/${listing.type}/${id}`} className="categoryListingLink">
        { listing.imgUrls !== undefined && <img
             className="categoryListingImg"
             src={listing?.imgUrls[0]}
@@ -18,7 +18,7 @@ const ListingItem = ({ listing, id, onDelete, onEdit }) => {
           
           <div className="categoryListingDetails">
             <p className="categoryListingLocation">{listing.location}</p>
-            <p className="catetgoryListingName">{listing.name}</p>
+            <p className="categoryListingName">{listing.name}</p>
             <p className="categoryListingPrice">
               $
               {listing.offer

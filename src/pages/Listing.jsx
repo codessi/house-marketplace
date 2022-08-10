@@ -18,6 +18,7 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css/bundle";
+// import 'swiper/swiper-bundle.css'
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const Listing = () => {
@@ -55,7 +56,7 @@ const Listing = () => {
         modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        style={{ height: "300px" }}
+        style={{ minHeight: "225px", height: '23vw'}}
         autoplay={{
           delay: 4500,
           disableOnInteraction: false,
@@ -85,7 +86,7 @@ const Listing = () => {
         <img src={shareIcon} alt="share" />
       </div>
       {shareLinkCopied && <p className="linkCopied">Link Copied</p>}
-      <div className="listingDetail">
+      <div className="listingDetails">
         <p className="listingName">
           {listing?.name}-
           {listing?.offer

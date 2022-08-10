@@ -411,7 +411,13 @@ button {
 }
 
 .categoryListingLink {
-  display: contents;
+  /* display: contents; */
+  
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  
+  /* justify-content: space-between; */
 }
 
 .categoryListingImg {
