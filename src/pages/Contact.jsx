@@ -31,7 +31,7 @@ const Contact = () => {
   return (
     <div className="pageContainer">
       <header>
-        <p className="pageheader">
+        <p className="pageHeader">
           Contact Landlord
         </p>
       </header>

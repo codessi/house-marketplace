@@ -99,7 +99,7 @@ const Offers = () => {
   return (
     <div className="category">
       <header>
-        <p className="pageheader">
+        <p className="pageHeader">
    Offers
         </p>
       </header>

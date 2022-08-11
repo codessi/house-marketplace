@@ -105,7 +105,7 @@ const Category = () => {
   return (
     <div className="category">
       <header>
-        <p className="pageheader">
+        <p className="pageHeader">
           {params.categoryName === "rent"
             ? "Place for rent"
             : "Places for Sale"}

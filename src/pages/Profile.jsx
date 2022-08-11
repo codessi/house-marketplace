@@ -105,7 +105,7 @@ const Profile = () => {
     <>
       <div className="profile">
         <header className="profileHeader">
-          <p className="pageheader">My Profile</p>
+          <p className="pageHeader">My Profile</p>
           <button className="logOut" type="button" onClick={onLogout}>
             Logout
           </button>
