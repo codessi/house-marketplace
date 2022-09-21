@@ -5,6 +5,7 @@ import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import googleIcon from "./../assets/svg/googleIcon.svg";
+import { app } from "../firebase.config";
 
 const OAuth = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const OAuth = () => {
 
   const onGoogleClick = async () => {
     try {
-      const auth = getAuth();
+      const auth = getAuth(app);
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
