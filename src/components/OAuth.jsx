@@ -15,35 +15,29 @@ const OAuth = () => {
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      const user = result.user
+      const user = result.user;
 
-      const docRef = doc(db, "users", user.uid)
-      const docSnap = await getDoc(docRef)
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
 
       if (!docSnap.exists()) {
-        await setDoc(doc(db, 'user', user.uid), {
+        await setDoc(doc(db, "user", user.uid), {
           name: user.displayName,
           email: user.email,
-          timestamp: serverTimestamp()
-        })
+          timestamp: serverTimestamp(),
+        });
       }
-      navigate('/')
-
+      navigate("/");
     } catch (error) {
-      toast.error("Could not authorize with Google")
+      toast.error("Could not authorize with Google");
     }
   };
 
   return (
     <div className="socialLogin">
-      <p>Sign {location.pathname === "/sign-up" ? "up" : "in"}</p>
-      <button className="socialIconDiv">
-        <img
-          src={googleIcon}
-          alt="google icon"
-          onClick={onGoogleClick}
-          className="socialIconImg"
-        />
+      <p>or Sign {location.pathname === "/sign-up" ? "up" : "in"} with google</p>
+      <button className="socialIconDiv" onClick={onGoogleClick}>
+        <img src={googleIcon} alt="google icon" className="socialIconImg" />
       </button>
     </div>
   );

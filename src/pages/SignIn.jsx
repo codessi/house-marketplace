@@ -69,14 +69,16 @@ const SignIn = () => {
             onChange={onChange}
           />
         </div>
-        <img
-          src={visibilityIcon}
-          alt="show password"
-          onClick={() => setShowPassword((prev) => !prev)}
-        />
-        <Link to="/forgot-passwords" className="forgotPasswordLink">
-          Forgot Password
-        </Link>
+        <div className="password-group flex ">
+          <img
+            src={visibilityIcon}
+            alt="show password"
+            onClick={() => setShowPassword((prev) => !prev)}
+          />
+          <Link to="/forgot-passwords" className="forgotPasswordLink">
+            Forgot Password
+          </Link>
+        </div>
 
         <div className="signInBar">
           <p className="signInText">Sign In</p>
@@ -85,9 +87,7 @@ const SignIn = () => {
           </button>
         </div>
       </form>
-
       <OAuth />
-
       <Link to={"/sign-up"} className="registerLink">
         Sign Up Instead
       </Link>
