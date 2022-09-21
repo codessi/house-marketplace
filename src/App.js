@@ -24,7 +24,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Explore />} />
+          <Route path="/house-marketplace" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/category/:categoryName/:listingId" element={<Listing />} /> 
