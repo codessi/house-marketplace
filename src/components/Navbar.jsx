@@ -1,10 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 export default function Navbar() {
+ 
+  const location = useLocation()
+  const { pathname } = location
+  const splitLocation = pathname.split('/')
+  
   return (
     <>
-      <nav className="absolute w-full bg-gradient-to-b from-gray-800  text-white flex justify-between   pb-8 z-50">
+      <nav className={` ${splitLocation[1]==="" &&"absolute w-full bg-gradient-to-b from-gray-800  text-white" }  flex justify-between   pb-8 z-50`}>
         <div className="flex gap-2 m-3">
           <button className="block md:hidden">=</button>
           <Link to="/">
@@ -16,16 +21,16 @@ export default function Navbar() {
         <ul className="flex items-start">
           <div className="hidden md:flex items-start ">
             <Link to="/category/sale">
-              <li className="hover:text-blue-800 p-2 hover:bg-white">Buy </li>
+              <li className={`${splitLocation[1]==="" ?"hover:text-blue-800 p-2 hover:bg-white": "hover:bg-blue-600 p-2 hover:text-white"} `}>Buy </li>
             </Link>
             <Link to="/category/rent">
-              <li className="hover:text-blue-800 p-2 hover:bg-white">Rent</li>{" "}
+              <li className={`${splitLocation[1]==="" ?"hover:text-blue-800 p-2 hover:bg-white": "hover:bg-blue-600 p-2 hover:text-white"} `}>Rent</li>{" "}
             </Link>
             <Link to="/create-listing">
-              <li className="hover:text-blue-800 p-2 hover:bg-white">Sell</li>
+              <li className={`${splitLocation[1]==="" ?"hover:text-blue-800 p-2 hover:bg-white": "hover:bg-blue-600 p-2 hover:text-white"} `}>Sell</li>
             </Link>
             <Link to="/offers">
-              <li className="hover:text-blue-800 p-2 hover:bg-white">
+              <li className={`${splitLocation[1]==="" ?"hover:text-blue-800 p-2 hover:bg-white": "hover:bg-blue-600 p-2 hover:text-white"} `}>
                 <span className="font-extrabold">H</span>M exclusive
               </li>
             </Link>
