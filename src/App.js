@@ -16,6 +16,8 @@ import CreatingListing from "./pages/CreatingListing";
 import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
 import EditListing from "./pages/EditListing";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -23,9 +25,11 @@ function App() {
   return (
     <>
       <Router>
+      <Navbar /> 
         <Routes>
           
-          <Route exact path="/" element={<Explore />} />
+          {/* <Route exact path="/" element={<Explore />} /> */}
+          <Route exact path="/" element={<Home />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/category/:categoryName/:listingId" element={<Listing />} /> 
@@ -46,8 +50,8 @@ function App() {
         <br />
         <br />
         <br />
-  
-        <Navbar /> 
+        <Footer />
+        
       </Router>
       <ToastContainer autoClose={1000} />
     </>

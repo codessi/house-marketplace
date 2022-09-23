@@ -1,40 +1,43 @@
-import React from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { ReactComponent as OfferIcon } from './../assets/svg/localOfferIcon.svg'
-import { ReactComponent as PersonOutlineIcon } from './../assets/svg/personOutlineIcon.svg'
-import { ReactComponent as ExploreIcon } from './../assets/svg/exploreIcon.svg'
+import React from "react";
+import { Link } from "react-router-dom";
 
-
-
-const Navbar = () => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const pathMatchRoute = (route) => {
-    if (route == location.pathname) {
-      return true
-    }
-  }
-
+export default function Navbar() {
   return (
-    <footer className="navbar">
-      <div className="nav navbarNav">
-        <ul className='navbarListItems'>
-          <li className='navbarListItem' onClick={() => navigate('/')}>
-            <ExploreIcon fill={pathMatchRoute('/')? "#2c2c2c": "#8f8f8f"} width='36px' height='36px' />
-            <p className={pathMatchRoute('/')? 'navbarListItemNameActive': 'navbarListItemName'}>Explore</p>
-          </li>
-          <li className='navbarListItem' onClick={() => navigate('/offers')}>
-            <OfferIcon fill={pathMatchRoute('/offers')? "#2c2c2c" : "#8f8f8f"} width='36px' height='36px' />
-            <p className={pathMatchRoute('/offers')? 'navbarListItemNameActive': 'navbarListItemName'}>Offers</p>
-          </li>
-          <li className='navbarListItem' onClick={() => navigate('/profile')}>
-            <PersonOutlineIcon fill={pathMatchRoute('/profile') ? "#2c2c2c" : "#8f8f8f"} width='36px' height='36px' />
-            <p className={pathMatchRoute('/profile')? 'navbarListItemNameActive': 'navbarListItemName'}>Profile</p>
-          </li>
-        </ul>
-      </div>
-    </footer>
-  )
-}
+    <>
+      <nav className="absolute w-full bg-gradient-to-b from-gray-800  text-white flex justify-between   pb-8 z-50">
+        <div className="flex gap-2 m-3">
+          <button className="block md:hidden">=</button>
+          <Link to="/">
+            <h3 className="text-2xl whitespace-nowrap font-extrabold">
+              House <span className="font-light">Marketplace</span>
+            </h3>
+          </Link>
+        </div>
+        <ul className="flex items-start">
+          <div className="hidden md:flex items-start ">
+            <Link to="/category/sale">
+              <li className="hover:text-blue-800 p-2 hover:bg-white">Buy </li>
+            </Link>
+            <Link to="/category/rent">
+              <li className="hover:text-blue-800 p-2 hover:bg-white">Rent</li>{" "}
+            </Link>
+            <Link to="/create-listing">
+              <li className="hover:text-blue-800 p-2 hover:bg-white">Sell</li>
+            </Link>
+            <Link to="/offers">
+              <li className="hover:text-blue-800 p-2 hover:bg-white">
+                <span className="font-extrabold">H</span>M exclusive
+              </li>
+            </Link>
+          </div>
 
-export default Navbar
+          <Link to="/sign-in">
+            <li className="hover:text-blue-800 p-2 hover:bg-white">
+              Register/Sign In
+            </li>
+          </Link>
+        </ul>
+      </nav>
+    </>
+  );
+}
