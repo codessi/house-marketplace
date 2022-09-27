@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import HMExclusive from "../components/HMExclusive";
 import home from "./../assets/jpg/indigo-home.jpg";
 import Fixup from "./../components/Fixup.jsx";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   collection,
   getDocs,
@@ -21,6 +21,9 @@ export default function Home() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
   const [lastFetchedListing, setLastFetchedListing] = useState(null);
+  const [buy, setBuy] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -58,6 +61,14 @@ export default function Home() {
     fetchListings();
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (buy) {
+      navigate('/category/sale')
+    }
+    navigate('/category/rent')
+  };
+
   return (
     <div>
       <div className="md:h-[80vh] overflow-hidden outline-1 relative flex justify-center items-center">
@@ -71,22 +82,28 @@ export default function Home() {
           <h3 className="text-white font-semibold text-5xl font-serif text-center">
             Find your place
           </h3>
-          <form action="">
-            <label className="absolute bottom-0 right-0 left-0" htmlFor="">
-              <button className="bg-white px-4">Rent</button>
-              <br />
-              <div className="bg-white flex">
-                <input className="bg-white p-1 w-full h-16" type="text" />
-                <button className="text-white p-1 px-3 m-2 bg-blue-400">
-                  Go
+          <form onSubmit={handleSubmit} action="">
+            <label
+              className="absolute bottom-0 right-0 left-0 index-10"
+              htmlFor=""
+            >
+              <div class="inline-flex rounded-md shadow-sm" role="group">
+              <button
+                  type="button" onClick={() => setBuy(false)}
+                  class={`py-2 px-4 text-sm font-medium${!buy? "z-10  bg-white text-black text-balck " :" text-white bg-black  hover:bg-white hover:text-black "
+                 }`}
+                >
+                  Rent
+                </button>
+
+                <button
+                     type="button" onClick={() => setBuy(true)}
+                     class={`py-2 px-4 text-sm font-medium${buy? "z-10  bg-white text-black text-balck " :" text-white bg-black  hover:bg-white hover:text-black "
+                    }`}
+                >
+                  Buy
                 </button>
               </div>
-            </label>
-            <br />
-            <label className="absolute bottom-0 right-0 left-0" htmlFor="">
-              <button className="bg-black text-white inline-block px-4 ml-16 ">
-                Sell
-              </button>
               <br />
               <div className="bg-white flex">
                 <input
@@ -94,7 +111,10 @@ export default function Home() {
                   placeholder="city, zip, address"
                   type="text"
                 />
-                <button className="text-white p-1 px-3 m-2 bg-blue-400">
+                <button
+                  type="submit"
+                  className="text-white p-1 px-3 m-2 bg-blue-400"
+                >
                   Go
                 </button>
               </div>

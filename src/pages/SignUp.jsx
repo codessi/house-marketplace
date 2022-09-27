@@ -66,57 +66,56 @@ const SignUp = () => {
   };
 
   return (
-    <div className="pageContainer">
-      <header>
-        <p className="pageHeader">Welcome Back!</p>
-      </header>
-
-      <form onSubmit={onSubmit}>
-        <input
-          type="name"
-          className="nameInput"
-          placeholder="name"
-          id="name"
-          value={name}
-          onChange={onChange}
-        />
-        <input
-          type="email"
-          className="emailInput"
-          placeholder="email"
-          id="email"
-          value={email}
-          onChange={onChange}
-        />
-        <div className="passwordInputDiv">
+    <div className="w-full flex justify-center">
+      <div className="m-10 border border-gray-400 p-7 rounded-lg ">
+        <header>
+          <p className="pageHeader">Welcome Back!</p>
+        </header>
+        <form onSubmit={onSubmit}>
           <input
-            type={showPassword ? "text" : "password"}
-            className="passwordInput"
-            placeholder="password"
-            id="password"
-            value={password}
+            type="name"
+            className="nameInput"
+            placeholder="name"
+            id="name"
+            value={name}
             onChange={onChange}
           />
-        </div>
-        <img
-          src={visibilityIcon}
-          alt="show password"
-          onClick={() => setShowPassword((prev) => !prev)}
-        />
-
-        <div className="signUpBar">
-          <p className="signUpText">Sign Up</p>
-          <button className="signUpButton">
-            <ArrowRightIcon fill="#fffff" width={34} height={34} />
-          </button>
-        </div>
-      </form>
+          <input
+            type="email"
+            className="emailInput"
+            placeholder="email"
+            id="email"
+            value={email}
+            onChange={onChange}
+          />
+          <div className="passwordInputDiv">
+            <input
+              type={showPassword ? "text" : "password"}
+              className="passwordInput"
+              placeholder="password"
+              id="password"
+              value={password}
+              onChange={onChange}
+            />
+          </div>
+          <img
+            src={visibilityIcon}
+            alt="show password"
+            onClick={() => setShowPassword((prev) => !prev)}
+          />
+          <div className="signUpBar">
+            <p className="signUpText">Sign Up</p>
+            <button className="signUpButton">
+              <ArrowRightIcon fill="#fffff" width={34} height={34} />
+            </button>
+          </div>
+        </form>
       
-      <OAuth />
-
-      <Link to={"/sign-in"} className="registerLink">
-        Sign In Instead
-      </Link>
+        <OAuth />
+        <Link to={"/sign-in"} className="registerLink">
+          Sign In Instead
+        </Link>
+      </div>
     </div>
   );
 };

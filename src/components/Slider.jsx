@@ -10,7 +10,9 @@ import SwiperCore, {
   Autoplay,
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/bundle";
+
+
+import 'swiper/swiper-bundle.css'
 import Spinner from "./Spinner";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);

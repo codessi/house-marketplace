@@ -14,7 +14,7 @@ import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 import ListingItem from "../components/ListingItem";
 import { MapContainer, Marker, Tooltip, Popup, TileLayer } from "react-leaflet";
-import "swiper/css/bundle";
+import 'swiper/swiper-bundle.css'
 
 const Category = () => {
   const [listings, setListings] = useState(null);
@@ -103,19 +103,12 @@ const Category = () => {
 
   return (
     <div className="category">
-      <header>
-        <p className="pageHeader">
-          {params.categoryName === "rent"
-            ? "Place for rent"
-            : "Places for Sale"}
-        </p>
-      </header>
       {loading ? (
         <Spinner />
       ) : listings && listings.length > 0 ? (
         <>
-          <div className="flex justify-center ">
-            <div className="w-96 h-96 bg-pink-400">
+          <div className="flex justify-between relative ">
+            <div className="w-5/12 bg-pink-400">
               <MapContainer
                 style={{ height: "100%", width: "100%" }}
                 // center={[listing.geolocation.lat, listing.geolocation.lng]}
@@ -149,8 +142,15 @@ const Category = () => {
                 })}
               </MapContainer>
             </div>
-            <main className="w-1/2">
-              <ul className="categoryListings">
+            <main className="basis-7/12 px-8 h-screen overflow-y-auto">
+              <header>
+                <h3 className="capitalize text-2xl py-3 tracking-wide">
+                  {params.categoryName === "rent"
+                    ? "Place for rent"
+                    : "Places for Sale"}
+                </h3>
+              </header>
+              <ul className="grid grid-cols-2 gap-4">
                 {listings.map((listing) => (
                   <ListingItem
                     listing={listing.data}

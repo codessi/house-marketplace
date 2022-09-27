@@ -15,7 +15,10 @@ const ListingItem = ({ listing, id, onDelete, onEdit }) => {
           <img className="z-0 object-cover" src={listing?.imgUrls[0]} alt="" />
           <div className="absolute flex justify-between p-2 right-0 left-0 bottom-0 gap-2 z-10">
             <div>
-              <div className="text-lg font-bold">${listing.regularPrice}</div>
+              <div className="text-lg font-bold">${listing.regularPrice.toString()
+                    .replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")}</div>
+              {/*  .toString()
+                    .replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,") */}
               <div className="text-xs">{listing.location}</div>
             </div>
             <div className="flex divide-x ">
