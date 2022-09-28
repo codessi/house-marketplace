@@ -46,10 +46,6 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-passwords" element={<ForgotPasswords /> } />
         </Routes>
-        <br />
-        <br />
-        <br />
-        <br />
         <Footer />
         
       </Router>

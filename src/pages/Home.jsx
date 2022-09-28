@@ -87,10 +87,10 @@ export default function Home() {
               className="absolute bottom-0 right-0 left-0 index-10"
               htmlFor=""
             >
-              <div class="inline-flex rounded-md shadow-sm" role="group">
+              <div className="inline-flex rounded-md shadow-sm" role="group">
               <button
                   type="button" onClick={() => setBuy(false)}
-                  class={`py-2 px-4 text-sm font-medium${!buy? "z-10  bg-white text-black text-balck " :" text-white bg-black  hover:bg-white hover:text-black "
+                  className={`py-2 px-4 text-sm font-medium${!buy? "z-10  bg-white text-black text-balck " :" text-white bg-black  hover:bg-white hover:text-black "
                  }`}
                 >
                   Rent
@@ -98,7 +98,7 @@ export default function Home() {
 
                 <button
                      type="button" onClick={() => setBuy(true)}
-                     class={`py-2 px-4 text-sm font-medium${buy? "z-10  bg-white text-black text-balck " :" text-white bg-black  hover:bg-white hover:text-black "
+                     className={`py-2 px-4 text-sm font-medium${buy? "z-10  bg-white text-black text-balck " :" text-white bg-black  hover:bg-white hover:text-black "
                     }`}
                 >
                   Buy

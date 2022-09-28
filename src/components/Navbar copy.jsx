@@ -1,40 +1,135 @@
-import React from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { ReactComponent as OfferIcon } from './../assets/svg/localOfferIcon.svg'
-import { ReactComponent as PersonOutlineIcon } from './../assets/svg/personOutlineIcon.svg'
-import { ReactComponent as ExploreIcon } from './../assets/svg/exploreIcon.svg'
+import React from "react";
+import { NavLink, useLocation, useParams } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import { useEffect , useState} from "react";
 
+export default function Navbar() {
+  const location = useLocation();
+  const { pathname } = location;
+  const splitLocation = pathname.split("/");
+//   const [auth, setAuth] = useState({})
+  
+//   useEffect(() => {
+//  setAuth( getAuth())
 
-
-const Navbar = () => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const pathMatchRoute = (route) => {
-    if (route == location.pathname) {
-      return true
-    }
-  }
+//   },[])
+//   console.log(auth)
+  
+  const auth = getAuth()
+  const user = auth.currentUser
 
   return (
-    <footer className="navbar">
-      <div className="nav navbarNav">
-        <ul className='navbarListItems'>
-          <li className='navbarListItem' onClick={() => navigate('/')}>
-            <ExploreIcon fill={pathMatchRoute('/')? "#2c2c2c": "#8f8f8f"} width='36px' height='36px' />
-            <p className={pathMatchRoute('/')? 'navbarListItemNameActive': 'navbarListItemName'}>Explore</p>
-          </li>
-          <li className='navbarListItem' onClick={() => navigate('/offers')}>
-            <OfferIcon fill={pathMatchRoute('/offers')? "#2c2c2c" : "#8f8f8f"} width='36px' height='36px' />
-            <p className={pathMatchRoute('/offers')? 'navbarListItemNameActive': 'navbarListItemName'}>Offers</p>
-          </li>
-          <li className='navbarListItem' onClick={() => navigate('/profile')}>
-            <PersonOutlineIcon fill={pathMatchRoute('/profile') ? "#2c2c2c" : "#8f8f8f"} width='36px' height='36px' />
-            <p className={pathMatchRoute('/profile')? 'navbarListItemNameActive': 'navbarListItemName'}>Profile</p>
-          </li>
-        </ul>
-      </div>
-    </footer>
-  )
-}
+    <>
+      <nav
+        className={` ${
+          splitLocation[1] === "" &&
+          "absolute w-full bg-gradient-to-b from-gray-800 pb-8  text-white"
+        }  flex justify-between items-end z-50 ${
+          splitLocation[1] !== "" && "pb-0 border-b-2 border-gray-300"
+        }`}
+      >
+        <div className="flex gap-2 m-3">
+          <button className="block md:hidden">=</button>
+          <NavLink to="/">
+            <h3 className="text-2xl whitespace-nowrap font-extrabold">
+              House <span className="font-light">Marketplace</span>
+            </h3>
+          </NavLink>
+        </div>
+        <ul className="flex items-start">
+          <div className="hidden md:flex items-start ">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "border-b-2 border-blue-600" : ""
+              }
+              to="/category/sale"
+            >
+              <li
+                className={`${
+                  splitLocation[1] === ""
+                    ? "hover:text-blue-800 p-2 hover:bg-white"
+                    : "hover:bg-gray-100 p-2 "
+                } `}
+              >
+                Buy{" "}
+              </li>
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "border-b-2 border-blue-600" : ""
+              }
+              to="/category/rent"
+            >
+              <li
+                className={`${
+                  splitLocation[1] === ""
+                    ? "hover:text-blue-800 p-2 hover:bg-white"
+                    : "hover:bg-gray-100 p-2 "
+                } `}
+              >
+                Rent
+              </li>{" "}
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "border-b-2 border-blue-600" : ""
+              }
+              to="/create-listing"
+            >
+              <li
+                className={`${
+                  splitLocation[1] === ""
+                    ? "hover:text-blue-800 p-2 hover:bg-white"
+                    : "hover:bg-gray-100 p-2 "
+                } `}
+              >
+                Sell
+              </li>
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "border-b-2 border-blue-600" : ""
+              }
+              to="/offers"
+            >
+              <li
+                className={`${
+                  splitLocation[1] === ""
+                    ? "hover:text-blue-800 p-2 hover:bg-white"
+                    : "hover:bg-gray-100 p-2 "
+                } `}
+              >
+                <span className="font-extrabold">H</span>M exclusive
+              </li>
+            </NavLink>
+          </div>
 
-export default Navbar
+          {user && (
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "border-b-2 border-blue-600" : ""
+              }
+              to="/sign-in"
+            >
+              <li className="hover:text-blue-800 p-2 hover:bg-white">
+                Hello {user?.displayName}
+              </li>
+            </NavLink>
+          )}
+          { !user && (
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "border-b-2 border-blue-600" : ""
+              }
+              to="/sign-in"
+            >
+              <li className="hover:text-blue-800 p-2 hover:bg-white">
+                Register/Sign In
+              </li>
+            </NavLink>
+          )}
+        </ul>
+      </nav>
+    </>
+  );
+}
