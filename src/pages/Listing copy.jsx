@@ -50,61 +50,59 @@ const Listing = () => {
   }
 
   return (
-    <main className="mx-auto p-5 space-y-4">
-      <div className="md:flex gap-9">
-        <Swiper
-          style={{
-            "--swiper-navigation-color": "#fff",
-            "--swiper-pagination-color": "#fff",
-          }}
-          spaceBetween={10}
-          navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
-          className=" border-2 border-black"
-        >
-          {listing?.imgUrls.map((url, index) => (
-            <SwiperSlide key={index}>
-              <img src={url} alt="" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        {/* section right */}
-        <div>
-          {/* thumbnail gallery */}
-          <div className="p-4">
-            <Swiper
-              onSwiper={setThumbsSwiper}
-              spaceBetween={30}
-              slidesPerView={3}
-              freeMode={true}
-              watchSlidesVisibility={true}
-              watchSlidesProgress={true}
-              className="w-96 "
-            >
-              {listing?.imgUrls.map((url, index) => (
-                <SwiperSlide key={index} className="">
-                  <div
-                    style={{
-                      background: `url(${url}) center no-repeat`,
-                      backgroundSize: "cover",
-                    }}
-                    className="h-32 w-32"
-                  ></div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-          <div
-            className="shareIconDiv"
-            onClick={() => {
-              navigator.clipboard.writeText(window.location.href);
-              setShareLinkCopied(true);
-              setTimeout(() => setShareLinkCopied(false), 2000);
+    <main className="mx-auto p-5 px-10 space-y-4">
+      <div className="flex justify-around border-2 border-indigo-400 px-24">
+        <div className="w-2/3  border  gap-9">
+          <Swiper 
+            style={{
+              "--swiper-navigation-color": "#fff",
+              "--swiper-pagination-color": "#fff",
             }}
+            spaceBetween={10}
+            navigation={true}
+            thumbs={{ swiper: thumbsSwiper }}
+            className="border-2  border-red-500 items-center "
           >
-            <img src={shareIcon} alt="share" />
-          </div>
-          {shareLinkCopied && <p className="linkCopied">Link Copied</p>}
+            {listing?.imgUrls.map((url, index) => (
+              <SwiperSlide className=" border-2 border-yellow-600" key={index}>
+                <img className="w-full object-cover"  src={url} alt="" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            spaceBetween={0}
+            slidesPerView={5}
+            freeMode={true}
+            watchSlidesVisibility={true}
+            watchSlidesProgress={true}
+            className=" bg-blue-400 "
+          >
+            {listing?.imgUrls.map((url, index) => (
+              <SwiperSlide key={index} className="">
+                <div
+                  style={{
+                    background: `url(${url}) center no-repeat`,
+                    backgroundSize: "cover",
+                  }}
+                  className=" bg-yellow-400 h-32 w-32"
+                ></div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="w-full p-10 border border-blue-500">
+          {/* <div
+          className="shareIconDiv"
+          onClick={() => {
+            navigator.clipboard.writeText(window.location.href);
+            setShareLinkCopied(true);
+            setTimeout(() => setShareLinkCopied(false), 2000);
+          }}
+        >
+          <img src={shareIcon} alt="share" />
+        </div>
+        {shareLinkCopied && <p className="linkCopied">Link Copied</p>} */}
           <div className="">
             <div className="listingDetails">
               <p className="listingName">
@@ -152,7 +150,7 @@ const Listing = () => {
           )}
         </div>
       </div>
-      {/* bottom section */}
+
       <div className="flex justify-around gap-3">
         <ul className="text-lg space-y-2   bg-slate-100  p-5">
           <li>Beautiful Mid Century Home.</li>

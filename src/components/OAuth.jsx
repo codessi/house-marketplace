@@ -35,9 +35,9 @@ const OAuth = () => {
   };
 
   return (
-    <div className="socialLogin">
+    <div className="text-center p-5  space-y-2">
       <p>or Sign {location.pathname === "/sign-up" ? "up" : "in"} with google</p>
-      <button className="socialIconDiv" onClick={onGoogleClick}>
+      <button className="w-10 " onClick={onGoogleClick}>
         <img src={googleIcon} alt="google icon" className="socialIconImg" />
       </button>
     </div>
