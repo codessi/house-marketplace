@@ -217,19 +217,26 @@ function CreateListing() {
   }
 
   return (
-    <div className="outline-1 outline outline-gray-300 w-max mx-auto p-6 m-6 rounded-lg">
+    <div className="listing outline-1 outline outline-gray-300 w-max mx-auto p-6 m-6 rounded-lg">
       <header>
-        <p className="pageHeader mx-auto">Create a Listing</p>
+        <p className="text-xl font-bold mx-auto">Create a Listing</p>
       </header>
 
       <main>
-        <form onSubmit={onSubmit} className="lg:flex justify-center gap-9">
-          <div>
+        <form
+          onSubmit={onSubmit}
+          className="lg:flex justify-center text-lg"
+        >
+          <div className="space-y-4 w-1/2">
             <label className="formLabel">Sell / Rent</label>
-            <div className="formButtons">
+            <div className="space-x-2">
               <button
                 type="button"
-                className={type === "sale" ? "formButtonActive" : "formButton"}
+                className={
+                  type === "sale"
+                    ? "bg-green-500 text-white rounded-xl p-2 px-4"
+                    : " border border-gray-400 rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
+                }
                 id="type"
                 value="sale"
                 onClick={onMutate}
@@ -238,7 +245,11 @@ function CreateListing() {
               </button>
               <button
                 type="button"
-                className={type === "rent" ? "formButtonActive" : "formButton"}
+                className={
+                  type === "rent"
+                    ? "bg-green-500 text-white rounded-xl p-2 px-4"
+                    : " border border-gray-400 rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
+                }
                 id="type"
                 value="rent"
                 onClick={onMutate}
@@ -246,9 +257,9 @@ function CreateListing() {
                 Rent
               </button>
             </div>
-            <label className="formLabel">Name</label>
+            <label className="block">Name</label>
             <input
-              className="formInputName"
+              className="border"
               type="text"
               id="name"
               value={name}
@@ -257,11 +268,11 @@ function CreateListing() {
               minLength="10"
               required
             />
-            <div className="formRooms flex">
-              <div>
-                <label className="formLabel">Bedrooms</label>
+            <div className=" flex gap-2">
+              <div className="space-x-2">
+                <label >Bedrooms</label>
                 <input
-                  className="formInputSmall"
+                  className="border"
                   type="number"
                   id="bedrooms"
                   value={bedrooms}
@@ -271,10 +282,10 @@ function CreateListing() {
                   required
                 />
               </div>
-              <div>
+              <div className="space-x-2">
                 <label className="formLabel">Bathrooms</label>
                 <input
-                  className="formInputSmall"
+                  className="border"
                   type="number"
                   id="bathrooms"
                   value={bathrooms}
@@ -285,59 +296,75 @@ function CreateListing() {
                 />
               </div>
             </div>
-            <label className="formLabel">Parking spot</label>
-            <div className="formButtons">
-              <button
-                className={parking ? "formButtonActive" : "formButton"}
-                type="button"
-                id="parking"
-                value={true}
-                onClick={onMutate}
-                min="1"
-                max="50"
-              >
-                Yes
-              </button>
-              <button
-                className={
-                  !parking && parking !== null ? "formButtonActive" : "formButton"
-                }
-                type="button"
-                id="parking"
-                value={false}
-                onClick={onMutate}
-              >
-                No
-              </button>
+            
+            
+            <div>
+              <label className="block">Parking spot</label>
+                         <div className="space-x-2">
+                <button
+                  className={
+                    parking
+                      ? "bg-green-500 text-white rounded-xl p-2 px-4"
+                      : " border border-gray-400 rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
+                  }
+                  type="button"
+                  id="parking"
+                  value={true}
+                  onClick={onMutate}
+                  min="1"
+                  max="50"
+                >
+                  Yes
+                </button>
+                <button
+                  className={
+                    !parking && parking !== null
+                      ? "bg-green-500 text-white rounded-xl p-2 px-4"
+                      : " border border-gray-400 rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
+                  }
+                  type="button"
+                  id="parking"
+                  value={false}
+                  onClick={onMutate}
+                >
+                  No
+                </button>
+              </div>
             </div>
-            <label className="formLabel">Furnished</label>
-            <div className="formButtons">
-              <button
-                className={furnished ? "formButtonActive" : "formButton"}
-                type="button"
-                id="furnished"
-                value={true}
-                onClick={onMutate}
-              >
-                Yes
-              </button>
-              <button
-                className={
-                  !furnished && furnished !== null
-                    ? "formButtonActive"
-                    : "formButton"
-                }
-                type="button"
-                id="furnished"
-                value={false}
-                onClick={onMutate}
-              >
-                No
-              </button>
+            <div>
+              <label className="block">Furnished</label>
+              <div className="space-x-2">
+                <button
+                  className={
+                    furnished
+                      ? "bg-green-500 text-white rounded-xl p-2 px-4"
+                      : " border border-gray-400 rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
+                  }
+                  type="button"
+                  id="furnished"
+                  value={true}
+                  onClick={onMutate}
+                >
+                  Yes
+                </button>
+                <button
+                  className={
+                    !furnished && furnished !== null
+                      ? "bg-green-500 text-white rounded-xl p-2 px-4"
+                      : " border border-gray-400 rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
+                  }
+                  type="button"
+                  id="furnished"
+                  value={false}
+                  onClick={onMutate}
+                >
+                  No
+                </button>
+              </div>
             </div>
-            <label className="formLabel">Address</label>
+            <label className="block">Address</label>
             <textarea
-              className="formInputAddress"
+              className="border"
               type="text"
               id="address"
               value={address}
@@ -345,14 +372,13 @@ function CreateListing() {
               required
             />
           </div>
-<div>
-  
+          <div className="space-x-2 w-1/2">
             {!geolocationEnabled && (
               <div className="formLatLng flex">
                 <div>
                   <label className="formLabel">Latitude</label>
                   <input
-                    className="formInputSmall"
+                    className="border"
                     type="number"
                     id="latitude"
                     value={latitude}
@@ -363,7 +389,7 @@ function CreateListing() {
                 <div>
                   <label className="formLabel">Longitude</label>
                   <input
-                    className="formInputSmall"
+                    className="border"
                     type="number"
                     id="longitude"
                     value={longitude}
@@ -373,11 +399,15 @@ function CreateListing() {
                 </div>
               </div>
             )}
-  
+
             <label className="formLabel">Offer</label>
-            <div className="formButtons">
+            <div className="space-x-2">
               <button
-                className={offer ? "formButtonActive" : "formButton"}
+                className={
+                  offer
+                    ? "bg-green-500 text-white rounded-xl p-2 px-4"
+                    : " border border-gray-400 rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
+                }
                 type="button"
                 id="offer"
                 value={true}
@@ -387,7 +417,9 @@ function CreateListing() {
               </button>
               <button
                 className={
-                  !offer && offer !== null ? "formButtonActive" : "formButton"
+                  !offer && offer !== null
+                    ? "bg-green-500 text-white rounded-xl p-2 px-4"
+                    : " border border-gray-400 rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
                 }
                 type="button"
                 id="offer"
@@ -397,11 +429,11 @@ function CreateListing() {
                 No
               </button>
             </div>
-  
-            <label className="formLabel">Regular Price</label>
-            <div className="formPriceDiv">
-              <input
-                className="formInputSmall"
+
+            <label className="block">Regular Price</label>
+            <div className="flex">
+            <span>$</span><input
+                className="border "
                 type="number"
                 id="regularPrice"
                 value={regularPrice}
@@ -410,14 +442,14 @@ function CreateListing() {
                 max="750000000"
                 required
               />
-              {type === "rent" && <p className="formPriceText">$ / Month</p>}
+              {type === "rent" && <p className="formPriceText"> / Month</p>}
             </div>
-  
+
             {offer && (
               <>
-                <label className="formLabel">Discounted Price</label>
-                <input
-                  className="formInputSmall"
+                <label className="block">Discounted Price</label>
+                <span>$</span><input
+                  className="border"
                   type="number"
                   id="discountedPrice"
                   value={discountedPrice}
@@ -428,13 +460,13 @@ function CreateListing() {
                 />
               </>
             )}
-  
-            <label className="formLabel">Images</label>
+
+            <label className="block mt-4 ">Images</label>
             <p className="imagesInfo">
               The first image will be the cover (max 6).
             </p>
             <input
-              className="formInputFile"
+              className="border file:border-none file:hover:bg-green-300 file:hover:text-white transition file:duration-0 file:hover:duration-1150 w-full file:text-sm file:font-bold file:py-2"
               type="file"
               id="images"
               onChange={onMutate}
@@ -443,10 +475,13 @@ function CreateListing() {
               multiple
               required
             />
-            <button type="submit" className="primaryButton createListingButton">
+            <button
+              type="submit"
+              className=" block mt-9 w-full bg-green-500 text-white rounded-xl p-2 px-4 hover:bg-green-400 hover:border hover:border-white hover:text-white"
+            >
               Create Listing
             </button>
-</div>
+          </div>
         </form>
       </main>
     </div>

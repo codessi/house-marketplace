@@ -49,14 +49,14 @@ const Category = () => {
         });
 
         setListings(newListings);
-
         setLoading(false);
       } catch (error) {
         toast.error("Could not fetch listings");
+        setLoading(false);
       }
     };
     fetchListings();
-  }, []);
+  }, [params.categoryName]);
 
   const geoArray = listings?.map((listing) => {
     return [
@@ -94,10 +94,10 @@ const Category = () => {
       });
 
       setListings([...listings, ...newListings]);
-
       setLoading(false);
     } catch (error) {
       toast.error("Could not fetch listings");
+      setLoading(false);
     }
   };
 
