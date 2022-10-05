@@ -51,9 +51,9 @@ const Listing = () => {
 
   return (
     <main className="mx-auto p-5 px-10 space-y-4">
-      <div className="flex justify-around border-2 border-indigo-400 px-24">
-        <div className="w-2/3  border  gap-9">
-          <Swiper 
+      <div className="flex justify-around  border-2  px-18">
+        <div className="w-2/3  border-2 shrink-0  p-10  gap-9">
+          <Swiper
             style={{
               "--swiper-navigation-color": "#fff",
               "--swiper-pagination-color": "#fff",
@@ -61,11 +61,14 @@ const Listing = () => {
             spaceBetween={10}
             navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
-            className="border-2  border-red-500 items-center "
+            className="border-2 items-center "
           >
             {listing?.imgUrls.map((url, index) => (
-              <SwiperSlide className=" border-2 border-yellow-600" key={index}>
-                <img className="w-full object-cover"  src={url} alt="" />
+              <SwiperSlide
+                className=" border-2 w-full"
+                key={index}
+              >
+                <img className="w-full object-cover" src={url} alt="" />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -76,7 +79,7 @@ const Listing = () => {
             freeMode={true}
             watchSlidesVisibility={true}
             watchSlidesProgress={true}
-            className=" bg-blue-400 "
+            className=""
           >
             {listing?.imgUrls.map((url, index) => (
               <SwiperSlide key={index} className="">
@@ -85,13 +88,13 @@ const Listing = () => {
                     background: `url(${url}) center no-repeat`,
                     backgroundSize: "cover",
                   }}
-                  className=" bg-yellow-400 h-32 w-32"
+                  className="  h-32 w-32"
                 ></div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-        <div className="w-full p-10 border border-blue-500">
+        <div className="w-full p-10 border ">
           {/* <div
           className="shareIconDiv"
           onClick={() => {
@@ -103,10 +106,12 @@ const Listing = () => {
           <img src={shareIcon} alt="share" />
         </div>
         {shareLinkCopied && <p className="linkCopied">Link Copied</p>} */}
-          <div className="">
-            <div className="listingDetails">
-              <p className="listingName">
-                {listing?.name}- $
+          <div className="text-sm space-y-3">
+            <h3 className="text-lg font-bold mb-5">{listing?.name}</h3>
+            <div className="flex border-b border-gray-200 ">
+              <div className="basis-24 shrink-0 text-gray-500">Price</div>
+              <div className="font-bold">
+                $
                 {listing?.offer
                   ? listing.discountedPrice
                       .toString()
@@ -114,32 +119,55 @@ const Listing = () => {
                   : listing?.regularPrice
                       .toString()
                       .replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,")}
-              </p>
-              <p className="listingLocation">{listing.address}</p>
-              <p className="listingType">
-                {listing.type === "rent" ? "Rent" : "Sale"}
-              </p>
-              {listing.offer && (
-                <p className="discoutPrice">
-                  ${listing.regularPrice - listing.discountedPrice} discount
-                </p>
-              )}
-              <ul className="listingDetailsList">
-                <li>
-                  {listing.bedrooms > 1
-                    ? `${listing.bedrooms} Bedrooms`
-                    : "1 Bedroom"}
-                </li>
-                <li>
-                  {listing.bathrooms > 1
-                    ? `${listing.bathrooms} Bathrooms`
-                    : "1 Bathroom"}
-                </li>
-                <li>{listing.parking && "Parking Spot"}</li>
-                <li>{listing.furnished && "Furnished"}</li>
-              </ul>
+              </div>
             </div>
-          </div>
+            <div className="flex border-b border-gray-200">
+              <div className="basis-24 shrink-0 text-gray-500">address</div>
+              <div className="font-bold">
+                {listing.address ?? listing.location}
+              </div>
+            </div>
+
+            <div className="flex border-b border-gray-200">
+              <div className="basis-24 shrink-0 text-gray-500">
+                Listing Type
+              </div>
+
+              <div className="font-bold">
+                {listing.type === "rent" ? "Rent" : "Sale"}
+              </div>
+            </div>
+
+            {listing.offer && (
+              <div className="flex border-b border-gray-200">
+                <div className="basis-24 shrink-0 text-gray-500">Discount</div>
+                <div className="font-bold">
+                  ${listing.regularPrice - listing.discountedPrice}
+                </div>
+              </div>
+            )}
+
+            <div className="flex border-b border-gray-200">
+              <div className="basis-24 shrink-0 text-gray-500">Bedroom</div>
+              <div className="font-bold">{listing.bedrooms}</div>
+            </div>
+            <div className="flex border-b border-gray-200">
+              <div className="basis-24 shrink-0 text-gray-500">Bathroom</div>
+              <div className="font-bold">{listing.bathrooms}</div>
+            </div>
+            <div className="flex border-b border-gray-200">
+              <div className="basis-24 shrink-0 text-gray-500">
+                Parking Spot
+              </div>
+              <div className="font-bold">{listing.parking ? "Yes": "No"}</div>
+            </div>
+            <div className="flex border-b border-gray-200">
+              <div className="basis-24 shrink-0 text-gray-500">
+                Furnished
+              </div>
+              <div className="font-bold">{listing.furnished? "Yes": "No"}</div>
+            </div>
+          </div>{" "}
           {auth.currentUser?.uid !== listing.userRef && (
             <Link
               className="primaryButton"

@@ -1,22 +1,32 @@
 import React from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import { useEffect , useState} from "react";
+import { NavLink, useLocation, useNavigate} from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
-//   const [auth, setAuth] = useState({})
-  
-//   useEffect(() => {
-//  setAuth( getAuth())
+  const [user, setUser] = useState({});
 
-//   },[])
-//   console.log(auth)
-  
-  const auth = getAuth()
-  const user = auth.currentUser
+
+
+  const auth = getAuth();
+  const navigate = useNavigate()
+  // onAuthStateChanged(auth, (data) => {
+  //   setUser(data)
+  // })
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (data) => {
+      setUser(data);
+    });
+  }, []);
+
+  const onLogout = () => {
+    auth.signOut();
+    navigate("/");
+  };
 
   return (
     <>
@@ -105,18 +115,18 @@ export default function Navbar() {
           </div>
 
           {user && (
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "border-b-2 border-blue-600" : ""
-              }
-              to="/sign-in"
-            >
-              <li className="hover:text-blue-800 p-2 hover:bg-white">
+            <>
+         
+              <button type='button'   onClick={onLogout} className="hover:text-blue-800 p-2 hover:bg-white">
+                Sign Out
+              </button>
+       
+              <li className=" p-2 ">
                 Hello {user?.displayName}
               </li>
-            </NavLink>
+            </>
           )}
-          { !user && (
+          {!user && (
             <NavLink
               className={({ isActive }) =>
                 isActive ? "border-b-2 border-blue-600" : ""

@@ -107,8 +107,8 @@ const Category = () => {
         <Spinner />
       ) : listings && listings.length > 0 ? (
         <>
-          <div className="flex justify-between relative ">
-            <div className="w-5/12 bg-pink-400">
+          <div className=" flex flex-col-reverse md:flex-row justify-between relative ">
+            <div className="h-96 md:h-screen md:w-5/12 md:p-4 z-0 ">
               <MapContainer
                 style={{ height: "100%", width: "100%" }}
                 // center={[listing.geolocation.lat, listing.geolocation.lng]}
@@ -142,7 +142,7 @@ const Category = () => {
                 })}
               </MapContainer>
             </div>
-            <main className="basis-7/12 px-8 h-screen overflow-y-auto">
+            <main className="md:basis-7/12 px-8 md:h-screen overflow-y-auto">
               <header>
                 <h3 className="capitalize text-2xl py-3 tracking-wide">
                   {params.categoryName === "rent"

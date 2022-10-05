@@ -225,7 +225,7 @@ function CreateListing() {
       <main>
         <form
           onSubmit={onSubmit}
-          className="lg:flex justify-center text-lg"
+          className="lg:flex justify-center gap-7 text-lg"
         >
           <div className="space-y-4 w-1/2">
             <label className="formLabel">Sell / Rent</label>
@@ -268,7 +268,7 @@ function CreateListing() {
               minLength="10"
               required
             />
-            <div className=" flex gap-2">
+            <div className=" space-y-3">
               <div className="space-x-2">
                 <label >Bedrooms</label>
                 <input

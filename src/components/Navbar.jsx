@@ -8,6 +8,7 @@ export default function Navbar() {
   const { pathname } = location;
   const splitLocation = pathname.split("/");
   const [user, setUser] = useState({});
+  const [navOpen, setNavOpen] = useState(false)
 
 
 
@@ -35,11 +36,11 @@ export default function Navbar() {
           splitLocation[1] === "" &&
           "absolute w-full bg-gradient-to-b from-gray-800 pb-8  text-white"
         }  flex justify-between items-end z-50 ${
-          splitLocation[1] !== "" && "pb-0 border-b-2 border-gray-300"
+          splitLocation[1] !== "" && "pb-0 border-b-2 border-gray-300 "
         }`}
       >
         <div className="flex gap-2 m-3">
-          <button className="block md:hidden">=</button>
+          <button onClick={()=> setNavOpen(!navOpen)} className="block md:hidden">=</button>
           <NavLink to="/">
             <h3 className="text-2xl whitespace-nowrap font-extrabold">
               House <span className="font-light">Marketplace</span>
@@ -47,24 +48,27 @@ export default function Navbar() {
           </NavLink>
         </div>
         <ul className="flex items-start">
-          <div className="hidden md:flex items-start ">
+          <div className={`h-0 overflow-hidden left-3 top-14  ${navOpen && "h-auto pb-10 pl-2 pr-10"} absolute  md:p-0 bg-gray-500 md:h-auto md:static md:bg-transparent md:flex items-start z-50  ${
+          splitLocation[1] !== "" && "text-white md:text-black "
+        }` }>
             <NavLink
               className={({ isActive }) =>
                 isActive ? "border-b-2 border-blue-600" : ""
-              }
+              } 
+              onClick={() => setNavOpen(false)}
               to="/category/sale"
             >
               <li
                 className={`${
                   splitLocation[1] === ""
                     ? "hover:text-blue-800 p-2 hover:bg-white"
-                    : "hover:bg-gray-100 p-2 "
+                    : "hover:bg-gray-100 p-2 hover:text-blue-800"
                 } `}
               >
                 Buy{" "}
               </li>
             </NavLink>
-            <NavLink
+            <NavLink onClick={() => setNavOpen(false)}
               className={({ isActive }) =>
                 isActive ? "border-b-2 border-blue-600" : ""
               }
@@ -74,13 +78,13 @@ export default function Navbar() {
                 className={`${
                   splitLocation[1] === ""
                     ? "hover:text-blue-800 p-2 hover:bg-white"
-                    : "hover:bg-gray-100 p-2 "
+                    : "hover:bg-gray-100 p-2 hover:text-blue-800"
                 } `}
               >
                 Rent
               </li>{" "}
             </NavLink>
-            <NavLink
+            <NavLink onClick={() => setNavOpen(false)}
               className={({ isActive }) =>
                 isActive ? "border-b-2 border-blue-600" : ""
               }
@@ -90,13 +94,13 @@ export default function Navbar() {
                 className={`${
                   splitLocation[1] === ""
                     ? "hover:text-blue-800 p-2 hover:bg-white"
-                    : "hover:bg-gray-100 p-2 "
+                    : "hover:bg-gray-100 p-2 hover:text-blue-800"
                 } `}
               >
                 Sell
               </li>
-            </NavLink>
-            <NavLink
+            </NavLink >
+            <NavLink onClick={() => setNavOpen(false)}
               className={({ isActive }) =>
                 isActive ? "border-b-2 border-blue-600" : ""
               }
@@ -106,7 +110,7 @@ export default function Navbar() {
                 className={`${
                   splitLocation[1] === ""
                     ? "hover:text-blue-800 p-2 hover:bg-white"
-                    : "hover:bg-gray-100 p-2 "
+                    : "hover:bg-gray-100 p-2 hover:text-blue-800"
                 } `}
               >
                 <span className="font-extrabold">H</span>M exclusive
@@ -127,7 +131,7 @@ export default function Navbar() {
             </>
           )}
           {!user && (
-            <NavLink
+            <NavLink onClick={() => setNavOpen(false)}
               className={({ isActive }) =>
                 isActive ? "border-b-2 border-blue-600" : ""
               }

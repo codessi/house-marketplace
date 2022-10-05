@@ -98,7 +98,7 @@ const Offers = () => {
       ) : listings && listings.length > 0 ? (
         <>
           <div className="flex justify-between relative ">
-            <div className="w-5/12 bg-pink-400">
+            <div className="w-5/12 z-0 bg-pink-400">
               <MapContainer
                 style={{ height: "100%", width: "100%" }}
                 // center={[listing.geolocation.lat, listing.geolocation.lng]}
