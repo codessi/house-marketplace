@@ -51,14 +51,14 @@ const Listing = () => {
 
   return (
     <main className="mx-auto p-5 px-10 space-y-4">
-      <div className="flex justify-around  border-2  px-18">
-        <div className="w-2/3  border-2 shrink-0  p-10  gap-9">
+      <div className="md:flex justify-around  border-2  px-18">
+        <div className=" md:w-2/3  border-2 shrink-0  p-10  gap-9">
           <Swiper
             style={{
               "--swiper-navigation-color": "#fff",
               "--swiper-pagination-color": "#fff",
             }}
-            spaceBetween={10}
+            spaceBetween={0}
             navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
             className="border-2 items-center "
@@ -103,9 +103,12 @@ const Listing = () => {
             >
               <img src={shareIcon} alt="share" />
             </div>
-                   
           </div>
-   {shareLinkCopied && <p className="linkCopied text-right absolute top-11 right-11">Link Copied</p>}
+          {shareLinkCopied && (
+            <p className="linkCopied text-right absolute top-11 right-11">
+              Link Copied
+            </p>
+          )}
           <div className="text-sm space-y-3 mt-5">
             <h3 className="text-lg font-bold mb-5">{listing?.name}</h3>
             <div className="flex border-b border-gray-200 ">
@@ -171,7 +174,6 @@ const Listing = () => {
           {auth.currentUser?.uid !== listing.userRef && (
             <button className="bg-green-500 p-3 px-6 rounded-2xl mt-8 mx-auto block border text-white hover:border-gray-500 hover:bg-white hover:text-gray-500">
               <Link
-               
                 to={`/contact/${listing.userRef}?listingName=${listing.name}`}
               >
                 Contact Landlord
@@ -181,7 +183,7 @@ const Listing = () => {
         </div>
       </div>
 
-      <div className="flex justify-around gap-3">
+      <div className="md:flex justify-around gap-3">
         <ul className="text-lg space-y-2   bg-slate-100  p-5">
           <li>Beautiful Mid Century Home.</li>
           <li>
@@ -204,7 +206,7 @@ const Listing = () => {
           </li>
         </ul>
 
-        <div className="leafletContainer-listing h-96 w-[50vw]">
+        <div className="leafletContainer-listing h-96 md:w-[50vw]">
           <MapContainer
             style={{ height: "100%", width: "100%" }}
             center={[listing.geolocation.lat, listing.geolocation.lng]}
